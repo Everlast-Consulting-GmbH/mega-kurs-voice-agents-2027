@@ -1,0 +1,22 @@
+{
+  "type": "client",
+  "name": "get_lead",
+  "description": "Details zu einem Lead.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "leadId": {
+        "type": "string",
+        "description": "Lead-ID aus list_leads, z. B. L-007"
+      }
+    },
+    "required": [
+      "leadId"
+    ]
+  }
+}

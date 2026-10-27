@@ -1,0 +1,25 @@
+{
+  "type": "client",
+  "name": "list_emails",
+  "description": "Posteingang, neueste zuerst.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "unreadOnly": {
+        "description": "Nur ungelesene Mails",
+        "type": "boolean"
+      },
+      "limit": {
+        "description": "Maximale Anzahl Mails, Standard 10",
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 50
+      }
+    }
+  }
+}

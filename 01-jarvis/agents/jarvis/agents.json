@@ -1,0 +1,7 @@
+{
+    "agents": [
+        {
+            "config": "agent_configs/jarvis.json"
+        }
+    ]
+}

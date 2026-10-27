@@ -1,0 +1,15 @@
+**
+!pyproject.toml
+!packages/
+!packages/contracts/
+!packages/contracts/python/
+!packages/contracts/python/**
+!services/
+!services/cu-worker/
+!services/cu-worker/**
+**/.venv
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+**/artifacts
+**/.env*

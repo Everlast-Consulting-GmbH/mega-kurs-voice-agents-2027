@@ -1,0 +1,14 @@
+{
+  "type": "client",
+  "name": "get_briefing",
+  "description": "Vorberechnetes Tagesbriefing: Termine, wichtige Mails, Leads, Kennzahlen.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {}
+  }
+}

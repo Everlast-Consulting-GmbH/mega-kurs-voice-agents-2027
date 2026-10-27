@@ -1,0 +1,10 @@
+{
+  "name": "jarvis-demo",
+  "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "gen": "pnpm --filter @jarvis/contracts gen",
+    "test": "pnpm -r test",
+    "mock-events": "pnpm --filter @jarvis/mock-events start"
+  }
+}

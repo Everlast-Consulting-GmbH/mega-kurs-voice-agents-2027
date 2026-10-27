@@ -1,0 +1,27 @@
+{
+  "type": "client",
+  "name": "post_message",
+  "description": "Nachricht in einen Team-Kanal posten.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "channel": {
+        "type": "string",
+        "description": "Team-Kanal ohne #, z. B. vertrieb"
+      },
+      "text": {
+        "type": "string",
+        "description": "Nachricht auf Deutsch"
+      }
+    },
+    "required": [
+      "channel",
+      "text"
+    ]
+  }
+}

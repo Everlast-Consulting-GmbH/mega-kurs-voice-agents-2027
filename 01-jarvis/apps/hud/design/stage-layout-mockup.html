@@ -1,0 +1,113 @@
+<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><style id="t3-theme">:root{color-scheme:dark;--background:#0a0a0a;--foreground:#f5f5f5;--muted:#111111;--muted-foreground:#818181;--card:#111111;--card-foreground:#f5f5f5;--popover:#111111;--popover-foreground:#f5f5f5;--secondary:#111111;--secondary-foreground:#f5f5f5;--border:#191919;--input:#1e1e1e;--ring:#346bf1;--primary:#346bf1;--primary-foreground:#ffffff;--accent:#346bf1;--accent-foreground:#ffffff;--accent-surface:#141414;--accent-surface-foreground:#f5f5f5;--destructive:#fb414a;--destructive-foreground:#ff6467;--destructive-surface:#301214;--warning:#fe9a00;--warning-foreground:#ffb900;--warning-surface:#312108;--success:#10b981;--success-foreground:#34d399;--info:#3b82f6;--info-foreground:#60a5fa;--code-background:#111111;--code-foreground:#f5f5f5;--chart-1:#346bf1;--chart-2:#2dd4bf;--chart-3:#fbbf24;--chart-4:#c084fc;--chart-5:#fb7185;--chart-6:#a3e635;--radius:0.625rem;--font-sans:-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;--font-mono:"SF Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;}@media (prefers-color-scheme: light){:root{color-scheme:light;--background:#fcfcfc;--foreground:#27272a;--muted:#fafafa;--muted-foreground:#71717b;--card:#ffffff;--card-foreground:#27272a;--popover:#ffffff;--popover-foreground:#27272a;--secondary:#fafafa;--secondary-foreground:#27272a;--border:#e4e4e7;--input:#d4d4d8;--ring:#1b4ed8;--primary:#1b4ed8;--primary-foreground:#ffffff;--accent:#1b4ed8;--accent-foreground:#ffffff;--accent-surface:#f4f4f5;--accent-surface-foreground:#18181b;--destructive:#fb2c36;--destructive-foreground:#c10007;--destructive-surface:#fcebec;--warning:#fe9a00;--warning-foreground:#bb4d00;--warning-surface:#fcf4e8;--success:#10b981;--success-foreground:#047857;--info:#3b82f6;--info-foreground:#1d4ed8;--code-background:#ffffff;--code-foreground:#27272a;--chart-1:#1b4ed8;--chart-2:#0d9488;--chart-3:#d97706;--chart-4:#9333ea;--chart-5:#e11d48;--chart-6:#65a30d;--radius:0.625rem;--font-sans:-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;--font-mono:"SF Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;}}html{background:var(--background);color:var(--foreground);font-family:var(--font-sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;scrollbar-width:none}html::-webkit-scrollbar{display:none}body{margin:0}code,kbd,pre,samp{font-family:var(--font-mono)}</style><script>(function(){var s=document.getElementById("t3-theme"),n=0;if(!s)return;var b="html{background:var(--background);color:var(--foreground);font-family:var(--font-sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;scrollbar-width:none}html::-webkit-scrollbar{display:none}body{margin:0}code,kbd,pre,samp{font-family:var(--font-mono)}";function a(t){if(!t||typeof t!=="object"||!t.variables||typeof t.variables!=="object")return;var c=":root{color-scheme:"+(t.appearance==="light"?"light":"dark")+";";for(var k in t.variables){if(/^--[a-z0-9-]+$/.test(k))c+=k+":"+String(t.variables[k]).replace(/[;{}<>]/g,"")+";";}s.textContent=c+"}"+b;}try{var m=/[#&]t3-theme=([^&]*)/.exec(location.hash);if(m){a(JSON.parse(decodeURIComponent(m[1])));history.replaceState(history.state,"",location.pathname+location.search);}}catch(e){}window.addEventListener("message",function(e){var d=e.data,p=d&&d.params;if(d&&d.jsonrpc==="2.0"&&d.method==="ui/notifications/host-context-changed"&&p&&p.styles)a({appearance:p.theme,variables:p.styles.variables});});document.addEventListener("click",function(e){var l=e.isTrusted?e.composedPath().find(function(t){return t&&t.matches&&t.matches("a[href]");}):null,u;if(!l)return;try{u=new URL(l.getAttribute("href"),document.baseURI);}catch(x){return;}if(!/^https?:$/.test(u.protocol)||u.href.split("#")[0]===location.href.split("#")[0])return;if(window.parent!==window){e.preventDefault();window.parent.postMessage({jsonrpc:"2.0",id:"t3-link-"+(++n),method:"ui/open-link",params:{url:u.href}},"*");}else{l.setAttribute("target","_blank");l.setAttribute("rel","noopener");}},true);if(window.parent!==window){var h,o,z=function(){var r=document.documentElement,v=Math.ceil(r.scrollHeight>r.clientHeight?r.scrollHeight:r.getBoundingClientRect().height);if(v===h)return;h=v;window.parent.postMessage({jsonrpc:"2.0",method:"ui/notifications/size-changed",params:{height:v}},"*");};if(window.ResizeObserver){o=new ResizeObserver(z);o.observe(document.documentElement);}document.addEventListener("DOMContentLoaded",function(){if(o&&document.body)o.observe(document.body);z();});window.addEventListener("load",z);}})();</script><meta charset="utf-8"><style>
+.wrap{display:flex;flex-direction:column;gap:22px;padding:0}
+.lbl{font:600 13px var(--font-sans);color:var(--foreground);margin:0 0 6px}
+.sub{font:13px var(--font-sans);color:var(--muted-foreground);margin:0 0 8px;line-height:1.45}
+.f{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;container-type:inline-size;font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#eef0ff;
+background:radial-gradient(120% 70% at 50% 108%,#f3b08a 0%,#a46a9e 22%,#3d3a78 48%,#141833 72%,#080a16 100%)}
+.f:after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.2px);background-size:.55cqw .55cqw;mask-image:linear-gradient(to top,rgba(0,0,0,.9),transparent 55%);pointer-events:none}
+.top{position:absolute;top:2.6cqw;left:3cqw;right:3cqw;display:flex;justify-content:space-between;font-size:1.05cqw;letter-spacing:.25em;color:#c9cdf0;z-index:3}
+.top b{font-weight:600;color:#fff}
+.live{letter-spacing:.06em}.live i{display:inline-block;width:.6cqw;height:.6cqw;border-radius:50%;background:#6ee7a8;margin-right:.6cqw;box-shadow:0 0 1cqw #6ee7a8}
+.bar{position:absolute;bottom:2.4cqw;left:50%;transform:translateX(-50%);display:flex;gap:.8cqw;align-items:center;z-index:3}
+.pill{background:rgba(10,12,28,.55);border:1px solid rgba(255,255,255,.12);border-radius:3cqw;padding:.7cqw 1.4cqw;font-size:1.05cqw;color:#dfe2ff;backdrop-filter:blur(8px)}
+.end{background:#ef4444;color:#fff;border:0}
+canvas{position:absolute;z-index:2}
+.cap{position:absolute;z-index:3;text-align:center}
+.cap .u{font-size:1.25cqw;color:#aab0d8;font-style:italic;margin-bottom:.8cqw}
+.cap .j{font-size:2.3cqw;font-weight:400;line-height:1.3;color:#fff;text-shadow:0 .2cqw 1.5cqw rgba(0,0,0,.5)}
+.cap .j em{font-style:normal;color:#ffc9a3}
+.stage{position:absolute;z-index:3;right:4cqw;top:8.5cqw;bottom:8cqw;width:56cqw;border-radius:1.6cqw;background:rgba(12,14,32,.62);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(14px);padding:2.4cqw 3cqw;box-sizing:border-box}
+.eyebrow{font-size:.95cqw;letter-spacing:.28em;color:#9aa0cc;text-transform:uppercase}
+.h{font-size:2.8cqw;font-weight:300;margin:.6cqw 0 1.6cqw;color:#fff}
+.h em{font-style:normal;color:#ffc9a3}
+.rows{display:flex;flex-direction:column;gap:1cqw}
+.row{display:flex;align-items:center;gap:2cqw;padding-bottom:1cqw;border-bottom:1px solid rgba(255,255,255,.08);opacity:.38}
+.row:last-child{border:0}
+.row.on{opacity:1}
+.row .n{font-size:3.8cqw;font-weight:200;min-width:8cqw;font-variant-numeric:tabular-nums;line-height:1}
+.row .t{font-size:1.6cqw;color:#fff}.row .d{font-size:1.1cqw;color:#a9aed4;margin-top:.3cqw}
+.bars{display:flex;align-items:flex-end;gap:2cqw;margin-top:1cqw}
+.b{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:1.05cqw;color:#b9bde6}
+.b div{width:100%;border-radius:.6cqw .6cqw .2cqw .2cqw;background:linear-gradient(#e8eaff,#6f74b8);margin:.5cqw 0}
+.b.hl div{background:linear-gradient(#ffd3b4,#c4708a)}.b.hl{color:#ffc9a3}
+.win{position:absolute;z-index:3;left:17cqw;right:4cqw;top:8cqw;bottom:9cqw;border-radius:1.2cqw;overflow:hidden;background:#f6f6fb;border:1px solid rgba(255,255,255,.4);box-shadow:0 2cqw 6cqw rgba(0,0,0,.5)}
+.wt{height:2.6cqw;background:#e9e9f1;display:flex;align-items:center;gap:.5cqw;padding:0 1cqw;font-size:.95cqw;color:#555}
+.wt i{width:.8cqw;height:.8cqw;border-radius:50%;display:inline-block}
+.app{display:flex;height:calc(100% - 2.6cqw);color:#1e1f2e}
+.side{width:14cqw;background:#efeff6;padding:1.4cqw;font-size:1cqw;line-height:2.4}
+.side b{display:block;font-size:1.2cqw;margin-bottom:.6cqw}
+.main{flex:1;padding:1.8cqw}
+.main h4{margin:0 0 1.2cqw;font-size:1.7cqw;font-weight:600}
+.slots{display:grid;grid-template-columns:repeat(6,1fr);gap:.7cqw;margin:1cqw 0}
+.slot{border:1px solid #d8d8e6;border-radius:.6cqw;padding:.7cqw 0;text-align:center;font-size:1cqw;background:#fff}
+.slot.t{border:2px solid #7c6cf0;background:#f1efff;font-weight:600;position:relative}
+.ring{position:absolute;width:5cqw;height:5cqw;border-radius:50%;border:2px solid rgba(124,108,240,.7);left:50%;top:50%;transform:translate(-50%,-50%)}
+.field{border:1px solid #d8d8e6;border-radius:.6cqw;padding:.8cqw 1cqw;font-size:1.05cqw;background:#fff;margin-bottom:.8cqw;color:#666}
+.step{position:absolute;z-index:4;left:17cqw;right:4cqw;bottom:6.2cqw;display:flex;justify-content:space-between;align-items:center;font-size:1.25cqw;color:#fff}
+.dots{display:flex;gap:.5cqw}.dots i{width:2.2cqw;height:.35cqw;border-radius:1cqw;background:rgba(255,255,255,.2)}.dots i.on{background:#ffc9a3}
+.call{position:absolute;z-index:3;left:0;right:0;top:57%;text-align:center}
+.call .k{font-size:1cqw;letter-spacing:.3em;color:#ffc9a3}
+.call .who{font-size:3.6cqw;font-weight:200;margin:.6cqw 0}
+.call .tm{font-size:1.5cqw;color:#c9cdf0;font-variant-numeric:tabular-nums}
+.tl{position:absolute;z-index:4;left:3cqw;right:3cqw;bottom:6.5cqw;display:flex;gap:1cqw}
+.tl div{flex:1;background:rgba(10,12,28,.6);border:1px solid rgba(255,255,255,.1);border-radius:1cqw;padding:1cqw 1.2cqw;font-size:1.05cqw;color:#cfd3f5;backdrop-filter:blur(8px)}
+.tl div b{display:block;font-size:.85cqw;letter-spacing:.2em;color:#8f95c4;font-weight:500;margin-bottom:.4cqw}
+.tl div.on{border-color:rgba(255,201,163,.6)}
+.tl div span{color:#ffc9a3}
+</style></head><body><div class="wrap">
+
+<div><p class="lbl">1 · Ruhezustand: nur Jarvis und ein Satz</p>
+<p class="sub">Dunkler, ruhiger Himmel, Licht nur am Horizont. Kugel groß in der Mitte, Text groß und lesbar. Oben nur Name und Live-Status.</p>
+<div class="f"><div class="top"><span><b>JARVIS</b></span><span class="live"><i></i>Bereit · 14 Werkzeuge</span></div>
+<canvas data-x="50" data-y="40" data-r="13"></canvas>
+<div class="cap" style="left:15%;right:15%;top:66%"><div class="j">Guten Abend, Leo.</div><div class="u" style="margin-top:1cqw;font-style:normal">Sag einfach „Jarvis".</div></div>
+<div class="bar"><span class="pill">● 00:00</span><span class="pill">🎙</span><span class="pill end">Beenden</span></div></div></div>
+
+<div><p class="lbl">2 · Briefing: Jarvis links als Sprecher, rechts eine große Bühne</p>
+<p class="sub">Immer nur eine Bühne gleichzeitig. Der Punkt, über den Jarvis gerade spricht, ist hell, der Rest gedimmt. Große Zahlen, wenig Text.</p>
+<div class="f"><div class="top"><span><b>JARVIS</b></span><span class="live"><i></i>Liest Kalender, Mails, CRM</span></div>
+<canvas data-x="20" data-y="38" data-r="9"></canvas>
+<div class="cap" style="left:3%;width:34%;top:58%"><div class="u">„Was ist heute wichtig?"</div><div class="j">Zwei Mails sind <em>dringend</em>. Dr. Weber wartet auf dein Angebot.</div></div>
+<div class="stage"><div class="eyebrow">Dein Tag · Montag, 12. Oktober</div><div class="h">Drei Dinge zählen heute.</div>
+<div class="rows"><div class="row"><div class="n">3</div><div><div class="t">Termine</div><div class="d">Erster um 10:00 mit der Müller GmbH</div></div></div>
+<div class="row on"><div class="n" style="color:#ffc9a3">2</div><div><div class="t">dringende Mails</div><div class="d">Dr. Weber wartet auf das Angebot</div></div></div>
+<div class="row"><div class="n">92</div><div><div class="t">Lead-Score Müller GmbH</div><div class="d">Angebot seit 3 Tagen offen</div></div></div></div></div>
+<div class="bar"><span class="pill">● 00:18</span><span class="pill">🎙</span><span class="pill end">Beenden</span></div></div></div>
+
+<div><p class="lbl">3 · Daten: die Aussage ist die Überschrift, das Diagramm der Beleg</p>
+<p class="sub">Statt „Pipeline nach Monat" steht oben, was es bedeutet. Unten die Erklär-Leiste (Taste D) statt Entwicklerwerten: was Jarvis in welcher Reihenfolge getan hat, in Klartext.</p>
+<div class="f"><div class="top"><span><b>JARVIS</b></span><span class="live"><i></i>Zeigt Pipeline</span></div>
+<canvas data-x="20" data-y="34" data-r="9"></canvas>
+<div class="cap" style="left:3%;width:34%;top:53%"><div class="u">„Wie sieht meine Pipeline aus?"</div><div class="j">Seit Mai stetig nach oben, <em>Oktober ist Rekord</em>.</div></div>
+<div class="stage" style="bottom:17cqw"><div class="eyebrow">Pipeline · offene Angebote</div><div class="h"><em>486.000 €</em>, plus 12 % zum Vormonat</div>
+<div class="bars" style="height:13cqw"><div class="b"><div style="height:43%"></div>Mai</div><div class="b"><div style="height:54%"></div>Jun</div><div class="b"><div style="height:61%"></div>Jul</div><div class="b"><div style="height:70%"></div>Aug</div><div class="b"><div style="height:89%"></div>Sep</div><div class="b hl"><div style="height:100%"></div>Okt</div></div></div>
+<div class="tl"><div><b>GEHÖRT</b>„Wie sieht meine Pipeline aus?"</div><div><b>VERSTANDEN</b>Frage nach Umsatzentwicklung</div><div><b>WERKZEUG</b>CRM gelesen · <span>10 Leads, 7 ms</span></div><div class="on"><b>ERGEBNIS</b>Diagramm + Antwort · <span>0,6 s</span></div></div>
+<div class="bar"><span class="pill">● 00:41</span><span class="pill">🎙</span><span class="pill end">Beenden</span></div></div></div>
+
+<div><p class="lbl">4 · Computer Use: das App-Fenster wird die Bühne</p>
+<p class="sub">Das echte Fenster groß, Jarvis klein links als Erzähler. Unter dem Fenster ein klarer Satz, was gerade passiert, plus Fortschritt.</p>
+<div class="f"><div class="top"><span><b>JARVIS</b></span><span class="live"><i></i>Bedient PraxisPilot</span></div>
+<canvas data-x="8.5" data-y="38" data-r="5.5"></canvas>
+<div class="cap" style="left:1.5%;width:14%;top:52%;text-align:left"><div class="j" style="font-size:1.45cqw">Ich übernehme. Frag mich ruhig weiter.</div></div>
+<div class="win"><div class="wt"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i>&nbsp; PraxisPilot · Termin planen</div>
+<div class="app"><div class="side"><b>PraxisPilot</b>Patienten &amp; Termine<br>Postfach<br>Kontakte</div><div class="main"><h4>Dr. Anna Weber · privat · P-001</h4>
+<div class="field">Datum · 2026-10-13 (nächster Dienstag)</div>
+<div class="slots"><div class="slot">08:00</div><div class="slot">08:30</div><div class="slot">09:00</div><div class="slot">09:30</div><div class="slot t">10:00<span class="ring"></span></div><div class="slot">10:30</div></div>
+<div class="field">Grund · Erstgespräch</div></div></div></div>
+<div class="step"><span>Wählt <b style="color:#ffc9a3">10:00 Uhr</b> am Dienstag</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
+<div class="bar"><span class="pill">● 01:12</span><span class="pill">🎙</span><span class="pill end">Beenden</span></div></div></div>
+
+<div><p class="lbl">5 · Anruf: alles weg außer Jarvis und dem Anruf</p>
+<p class="sub">Höhepunkt der Demo. Kein Kasten, keine Karte: Kugel pulsiert, ein großer Satz, die Zeit läuft.</p>
+<div class="f" style="background:radial-gradient(110% 70% at 50% 110%,#c98a84 0%,#5b3f7a 25%,#1a1a3a 55%,#05060e 100%)"><div class="top"><span><b>JARVIS</b></span><span class="live"><i></i>Ausgehender Anruf</span></div>
+<canvas data-x="50" data-y="34" data-r="12" data-rings="1"></canvas>
+<div class="call"><div class="k">VERBUNDEN</div><div class="who">Jarvis ruft Leo an</div><div class="tm">00:12 · „Das Angebot für die Müller GmbH liegt in deinem Postfach."</div></div>
+<div class="bar"><span class="pill">● 01:58</span><span class="pill">🎙</span><span class="pill end">Beenden</span></div></div></div>
+
+</div><script>
+document.querySelectorAll('canvas').forEach(c=>{const f=c.parentElement,W=f.clientWidth,H=f.clientHeight,d=2;c.width=W*d;c.height=H*d;c.style.left=0;c.style.top=0;c.style.width=W+'px';c.style.height=H+'px';
+const g=c.getContext('2d');g.scale(d,d);const cx=W*c.dataset.x/100,cy=H*c.dataset.y/100,R=W*c.dataset.r/100;
+const glow=g.createRadialGradient(cx,cy,0,cx,cy,R*2.2);glow.addColorStop(0,'rgba(170,180,255,.28)');glow.addColorStop(1,'rgba(170,180,255,0)');g.fillStyle=glow;g.fillRect(0,0,W,H);
+const N=420,ga=Math.PI*(3-Math.sqrt(5));for(let i=0;i<N;i++){const y=1-2*(i+.5)/N,r=Math.sqrt(1-y*y),t=ga*i+.6,x=Math.cos(t)*r,z=Math.sin(t)*r;const k=.5+.5*z;g.fillStyle=`rgba(255,255,255,${.15+.8*k})`;g.beginPath();g.arc(cx+x*R,cy+y*R,Math.max(.4,(.5+1.1*k)*W/900),0,7);g.fill();}
+if(c.dataset.rings){for(let j=1;j<4;j++){g.strokeStyle=`rgba(255,201,163,${.45/j})`;g.lineWidth=1;g.beginPath();g.arc(cx,cy,R*(1+j*.35),0,7);g.stroke();}}});
+</script></body></html>

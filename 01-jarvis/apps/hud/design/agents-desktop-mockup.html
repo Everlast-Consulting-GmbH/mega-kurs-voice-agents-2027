@@ -1,0 +1,138 @@
+<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><style id="t3-theme">:root{color-scheme:dark;--background:#0a0a0a;--foreground:#f5f5f5;--muted:#111111;--muted-foreground:#818181;--card:#111111;--card-foreground:#f5f5f5;--popover:#111111;--popover-foreground:#f5f5f5;--secondary:#111111;--secondary-foreground:#f5f5f5;--border:#191919;--input:#1e1e1e;--ring:#346bf1;--primary:#346bf1;--primary-foreground:#ffffff;--accent:#346bf1;--accent-foreground:#ffffff;--accent-surface:#141414;--accent-surface-foreground:#f5f5f5;--destructive:#fb414a;--destructive-foreground:#ff6467;--destructive-surface:#301214;--warning:#fe9a00;--warning-foreground:#ffb900;--warning-surface:#312108;--success:#10b981;--success-foreground:#34d399;--info:#3b82f6;--info-foreground:#60a5fa;--code-background:#111111;--code-foreground:#f5f5f5;--chart-1:#346bf1;--chart-2:#2dd4bf;--chart-3:#fbbf24;--chart-4:#c084fc;--chart-5:#fb7185;--chart-6:#a3e635;--radius:0.625rem;--font-sans:-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;--font-mono:"SF Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;}@media (prefers-color-scheme: light){:root{color-scheme:light;--background:#fcfcfc;--foreground:#27272a;--muted:#fafafa;--muted-foreground:#71717b;--card:#ffffff;--card-foreground:#27272a;--popover:#ffffff;--popover-foreground:#27272a;--secondary:#fafafa;--secondary-foreground:#27272a;--border:#e4e4e7;--input:#d4d4d8;--ring:#1b4ed8;--primary:#1b4ed8;--primary-foreground:#ffffff;--accent:#1b4ed8;--accent-foreground:#ffffff;--accent-surface:#f4f4f5;--accent-surface-foreground:#18181b;--destructive:#fb2c36;--destructive-foreground:#c10007;--destructive-surface:#fcebec;--warning:#fe9a00;--warning-foreground:#bb4d00;--warning-surface:#fcf4e8;--success:#10b981;--success-foreground:#047857;--info:#3b82f6;--info-foreground:#1d4ed8;--code-background:#ffffff;--code-foreground:#27272a;--chart-1:#1b4ed8;--chart-2:#0d9488;--chart-3:#d97706;--chart-4:#9333ea;--chart-5:#e11d48;--chart-6:#65a30d;--radius:0.625rem;--font-sans:-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;--font-mono:"SF Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;}}html{background:var(--background);color:var(--foreground);font-family:var(--font-sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;scrollbar-width:none}html::-webkit-scrollbar{display:none}body{margin:0}code,kbd,pre,samp{font-family:var(--font-mono)}</style><script>(function(){var s=document.getElementById("t3-theme"),n=0;if(!s)return;var b="html{background:var(--background);color:var(--foreground);font-family:var(--font-sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;scrollbar-width:none}html::-webkit-scrollbar{display:none}body{margin:0}code,kbd,pre,samp{font-family:var(--font-mono)}";function a(t){if(!t||typeof t!=="object"||!t.variables||typeof t.variables!=="object")return;var c=":root{color-scheme:"+(t.appearance==="light"?"light":"dark")+";";for(var k in t.variables){if(/^--[a-z0-9-]+$/.test(k))c+=k+":"+String(t.variables[k]).replace(/[;{}<>]/g,"")+";";}s.textContent=c+"}"+b;}try{var m=/[#&]t3-theme=([^&]*)/.exec(location.hash);if(m){a(JSON.parse(decodeURIComponent(m[1])));history.replaceState(history.state,"",location.pathname+location.search);}}catch(e){}window.addEventListener("message",function(e){var d=e.data,p=d&&d.params;if(d&&d.jsonrpc==="2.0"&&d.method==="ui/notifications/host-context-changed"&&p&&p.styles)a({appearance:p.theme,variables:p.styles.variables});});document.addEventListener("click",function(e){var l=e.isTrusted?e.composedPath().find(function(t){return t&&t.matches&&t.matches("a[href]");}):null,u;if(!l)return;try{u=new URL(l.getAttribute("href"),document.baseURI);}catch(x){return;}if(!/^https?:$/.test(u.protocol)||u.href.split("#")[0]===location.href.split("#")[0])return;if(window.parent!==window){e.preventDefault();window.parent.postMessage({jsonrpc:"2.0",id:"t3-link-"+(++n),method:"ui/open-link",params:{url:u.href}},"*");}else{l.setAttribute("target","_blank");l.setAttribute("rel","noopener");}},true);if(window.parent!==window){var h,o,z=function(){var r=document.documentElement,v=Math.ceil(r.scrollHeight>r.clientHeight?r.scrollHeight:r.getBoundingClientRect().height);if(v===h)return;h=v;window.parent.postMessage({jsonrpc:"2.0",method:"ui/notifications/size-changed",params:{height:v}},"*");};if(window.ResizeObserver){o=new ResizeObserver(z);o.observe(document.documentElement);}document.addEventListener("DOMContentLoaded",function(){if(o&&document.body)o.observe(document.body);z();});window.addEventListener("load",z);}})();</script><meta charset="utf-8"><style>
+.wrap{display:flex;flex-direction:column;gap:22px}
+.lbl{font:600 13px var(--font-sans);color:var(--foreground);margin:0 0 6px}
+.sub{font:13px var(--font-sans);color:var(--muted-foreground);margin:0 0 8px;line-height:1.45}
+.f{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;container-type:inline-size;font-family:Inter,-apple-system,system-ui,sans-serif;
+background:radial-gradient(120% 80% at 50% 115%,#e9a07f 0%,#8a5a96 24%,#2f2f63 50%,#10132a 75%,#070812 100%)}
+.top{position:absolute;top:1.4cqw;left:2cqw;right:2cqw;display:flex;justify-content:space-between;align-items:center;font-size:.9cqw;color:#cfd3f5;z-index:20}
+.top b{letter-spacing:.3em;color:#fff}
+.agents{display:flex;gap:.6cqw}
+.ag{display:flex;align-items:center;gap:.4cqw;background:rgba(10,12,28,.6);border:1px solid rgba(255,255,255,.14);border-radius:2cqw;padding:.3cqw .8cqw;font-size:.8cqw;color:#e4e6ff}
+.ag i{width:.55cqw;height:.55cqw;border-radius:50%}
+.win{position:absolute;border-radius:.8cqw;overflow:hidden;background:#fff;box-shadow:0 1.6cqw 4cqw rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.25);z-index:5;color:#1f2330}
+.tb{height:1.9cqw;background:#ececf1;display:flex;align-items:center;gap:.35cqw;padding:0 .7cqw;font-size:.75cqw;color:#555;border-bottom:1px solid #dcdce4}
+.tb i{width:.62cqw;height:.62cqw;border-radius:50%;display:inline-block}
+.tb span{margin-left:.6cqw;font-weight:500}
+.cur{position:absolute;z-index:30;width:0;height:0}
+.cur svg{width:1.4cqw;height:1.4cqw;filter:drop-shadow(0 .15cqw .3cqw rgba(0,0,0,.4))}
+.cur em{position:absolute;left:1.1cqw;top:1.1cqw;font-style:normal;font-size:.7cqw;color:#fff;padding:.15cqw .5cqw;border-radius:.4cqw;white-space:nowrap}
+.mail{display:flex;height:calc(100% - 1.9cqw);font-size:.72cqw}
+.mside{width:8cqw;background:#f6f6f9;padding:.8cqw;line-height:2;color:#444}
+.mside .on{background:#e4e3ff;border-radius:.4cqw;padding:0 .4cqw;color:#3b2fb8;font-weight:600}
+.mlist{width:13cqw;border-right:1px solid #eee}
+.mi{padding:.55cqw .7cqw;border-bottom:1px solid #f0f0f4}
+.mi b{display:block;font-size:.75cqw}.mi small{color:#777}
+.mi.sel{background:#f1efff}
+.mi .dot{display:inline-block;width:.45cqw;height:.45cqw;background:#6c5ce7;border-radius:50%;margin-right:.3cqw}
+.mread{flex:1;padding:1cqw;position:relative}
+.mread h5{margin:0 0 .3cqw;font-size:1cqw}
+.mread .meta{color:#888;margin-bottom:.8cqw}
+.draft{position:absolute;left:1cqw;right:1cqw;bottom:1cqw;border:1px solid #d9d6ff;border-radius:.6cqw;padding:.7cqw;background:#faf9ff;box-shadow:0 .3cqw 1cqw rgba(108,92,231,.15)}
+.draft .h{font-size:.65cqw;color:#6c5ce7;font-weight:600;letter-spacing:.05em;margin-bottom:.3cqw}
+.caret{display:inline-block;width:.1cqw;height:.85cqw;background:#6c5ce7;vertical-align:middle;margin-left:.1cqw}
+.cal{height:calc(100% - 1.9cqw);font-size:.65cqw;display:grid;grid-template-columns:2.4cqw repeat(5,1fr);grid-template-rows:auto 1fr}
+.cal .hd{grid-column:1/-1;display:grid;grid-template-columns:2.4cqw repeat(5,1fr);border-bottom:1px solid #eee;padding:.4cqw 0;color:#666;font-weight:600;text-align:center}
+.col{position:relative;border-left:1px solid #f0f0f4}
+.hrs{color:#aaa;text-align:right;padding-right:.3cqw}
+.hrs div{height:3.6cqw}
+.ev{position:absolute;left:.15cqw;right:.15cqw;border-radius:.35cqw;padding:.25cqw .35cqw;font-size:.6cqw;line-height:1.25;color:#fff}
+.ev.ghost{border:2px dashed #ff9f6b;background:rgba(255,159,107,.18);color:#c2551b;font-weight:600}
+.chat{display:flex;height:calc(100% - 1.9cqw);font-size:.7cqw}
+.cside{width:7cqw;background:#3f0e40;color:#d9c7da;padding:.7cqw;line-height:2}
+.cside .on{background:#1164a3;color:#fff;border-radius:.3cqw;padding:0 .35cqw}
+.cmain{flex:1;padding:.7cqw;display:flex;flex-direction:column;gap:.55cqw;position:relative}
+.msg{display:flex;gap:.45cqw}.av{width:1.5cqw;height:1.5cqw;border-radius:.35cqw;flex:none}
+.msg b{font-size:.72cqw}.msg p{margin:.1cqw 0 0;color:#333}
+.compose{margin-top:auto;border:1px solid #bbb;border-radius:.45cqw;padding:.5cqw;color:#999}
+.crm{height:calc(100% - 1.9cqw);display:flex;gap:.5cqw;padding:.6cqw;background:#f5f6f8;font-size:.65cqw}
+.kc{flex:1;background:#eceef2;border-radius:.45cqw;padding:.4cqw}
+.kc h6{margin:0 0 .4cqw;font-size:.62cqw;color:#666;text-transform:uppercase;letter-spacing:.06em;display:flex;justify-content:space-between}
+.card{background:#fff;border-radius:.35cqw;padding:.4cqw;margin-bottom:.35cqw;box-shadow:0 .05cqw .15cqw rgba(0,0,0,.1)}
+.card b{display:block;font-size:.66cqw}.card small{color:#888}
+.card.moving{transform:rotate(-3deg) translateX(1.2cqw);box-shadow:0 .8cqw 1.6cqw rgba(0,0,0,.25);outline:2px solid #22c55e}
+canvas{position:absolute;z-index:15;pointer-events:none}
+.cap{position:absolute;z-index:16;color:#fff;font-size:1.25cqw;text-shadow:0 .2cqw 1cqw rgba(0,0,0,.6)}
+.cap .u{font-size:.85cqw;color:#c3c7ee;font-style:italic;margin-bottom:.3cqw}
+.toast{position:absolute;z-index:25;background:rgba(255,255,255,.96);border-radius:.7cqw;padding:.6cqw .8cqw;font-size:.72cqw;color:#222;box-shadow:0 .8cqw 2cqw rgba(0,0,0,.35);display:flex;gap:.5cqw;align-items:center;width:15cqw}
+.toast .ic{width:1.6cqw;height:1.6cqw;border-radius:.4cqw;flex:none}
+.bar{position:absolute;bottom:1.2cqw;left:50%;transform:translateX(-50%);display:flex;gap:.6cqw;z-index:20}
+.pill{background:rgba(10,12,28,.6);border:1px solid rgba(255,255,255,.14);border-radius:2cqw;padding:.45cqw 1cqw;font-size:.8cqw;color:#e4e6ff}
+.end{background:#ef4444;color:#fff;border:0}
+.beam{position:absolute;z-index:4;height:2px;transform-origin:0 50%;background:linear-gradient(90deg,rgba(255,201,163,0),rgba(255,201,163,.9));box-shadow:0 0 .6cqw rgba(255,201,163,.8)}
+.big{position:absolute;z-index:16;left:0;right:0;text-align:center;color:#fff}
+.big .n{font-size:5cqw;font-weight:200;letter-spacing:-.02em}
+.big .t{font-size:1.3cqw;color:#d6d9ff}
+</style></head><body><div class="wrap">
+
+<div><p class="lbl">Bild A · „Kümmer dich um die Müller GmbH" – Jarvis arbeitet in vier echten Programmen gleichzeitig</p>
+<p class="sub">Vier Agenten, vier Cursor, vier Fenster, die aussehen wie Mail, Kalender, Slack und ein CRM. Man sieht live, wie getippt, verschoben und abgeschickt wird. Jarvis erzählt dabei oben links. Lichtbahnen von der Kugel zeigen, wer gerade arbeitet.</p>
+<div class="f">
+<div class="top"><b>JARVIS</b><div class="agents"><span class="ag"><i style="background:#6c5ce7"></i>Mail · schreibt</span><span class="ag"><i style="background:#ff9f6b"></i>Kalender · plant</span><span class="ag"><i style="background:#1164a3"></i>Slack · informiert</span><span class="ag"><i style="background:#22c55e"></i>CRM · aktualisiert</span></div></div>
+<canvas data-x="10" data-y="17" data-r="4"></canvas>
+<div class="cap" style="left:2cqw;top:24cqw;width:16cqw"><div class="u">„Kümmer dich um die Müller GmbH."</div>Ich bestätige den Termin, sag dem Team Bescheid und schiebe den Deal auf <b style="color:#ffc9a3">Verhandlung</b>.</div>
+<div class="beam" style="left:13cqw;top:9cqw;width:9cqw;transform:rotate(14deg)"></div>
+<div class="beam" style="left:13cqw;top:9.5cqw;width:47cqw;transform:rotate(3deg)"></div>
+<div class="beam" style="left:13cqw;top:10cqw;width:21cqw;transform:rotate(58deg)"></div>
+<div class="beam" style="left:13cqw;top:10cqw;width:55cqw;transform:rotate(30deg)"></div>
+<div class="win" style="left:19cqw;top:4.5cqw;width:39cqw;height:24cqw">
+<div class="tb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>Mail – Posteingang</span></div>
+<div class="mail"><div class="mside"><div class="on">Posteingang 4</div>Markiert<br>Gesendet<br>Entwürfe</div>
+<div class="mlist"><div class="mi sel"><span class="dot"></span><b>Thomas Müller</b><small>Unterschrift heute möglich?</small></div><div class="mi"><span class="dot"></span><b>Dr. Anna Weber</b><small>KI-Empfang: erste Eindrücke</small></div><div class="mi"><b>Sarah Klein · Brandt AG</b><small>Workshop-Termine Q4</small></div><div class="mi"><b>Finanzen</b><small>Rechnung #2026-114</small></div></div>
+<div class="mread"><h5>Unterschrift heute möglich?</h5><div class="meta">Thomas Müller · Müller GmbH · vor 3 Min.</div>Hallo Leo, wir sind durch. Wenn ihr heute 15 Uhr könnt, unterschreiben wir direkt im Call.
+<div class="draft"><div class="h">ANTWORT · JARVIS SCHREIBT</div>Hallo Herr Müller, sehr gern. 15 Uhr passt, die Einladung kommt gleich. Bis nachher<span class="caret"></span></div></div></div></div>
+<div class="win" style="left:60cqw;top:4.5cqw;width:38cqw;height:24cqw">
+<div class="tb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>Kalender – Woche 42</span></div>
+<div class="cal"><div class="hd"><span></span><span>Mo 12.</span><span>Di 13.</span><span>Mi 14.</span><span>Do 15.</span><span>Fr 16.</span></div>
+<div class="hrs"><div>09</div><div>11</div><div>13</div><div>15</div><div>17</div></div>
+<div class="col"><div class="ev" style="top:.3cqw;height:2cqw;background:#4f8df5">Team-Standup</div><div class="ev ghost" style="top:11cqw;height:3cqw">15:00 Unterschrift Müller GmbH</div></div>
+<div class="col"><div class="ev" style="top:3.8cqw;height:2.6cqw;background:#a855f7">Dr. Weber · Onboarding</div></div>
+<div class="col"><div class="ev" style="top:5.5cqw;height:4cqw;background:#14b8a6">Workshop Brandt AG</div></div>
+<div class="col"><div class="ev" style="top:.3cqw;height:2cqw;background:#4f8df5">Team-Standup</div></div>
+<div class="col"><div class="ev" style="top:14.6cqw;height:2.4cqw;background:#f59e0b">Review Q4</div></div></div></div>
+<div class="win" style="left:19cqw;top:30.5cqw;width:30cqw;height:20cqw">
+<div class="tb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>Slack – #vertrieb</span></div>
+<div class="chat"><div class="cside"># allgemein<br><div class="on"># vertrieb</div># delivery<br>@ Mara</div>
+<div class="cmain"><div class="msg"><div class="av" style="background:#f59e0b"></div><div><b>Mara</b> <small style="color:#999">09:12</small><p>Hat Müller sich schon gemeldet?</p></div></div>
+<div class="msg"><div class="av" style="background:linear-gradient(135deg,#a5b4fc,#ffc9a3)"></div><div><b>Jarvis</b> <small style="color:#999">jetzt</small><p>🎉 Müller GmbH will heute 15 Uhr unterschreiben (84.000 €). Termin steht, Leo ist informiert.</p></div></div>
+<div class="compose">Nachricht an #vertrieb</div></div></div></div>
+<div class="win" style="left:51cqw;top:30.5cqw;width:47cqw;height:20cqw">
+<div class="tb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>CRM – Pipeline</span></div>
+<div class="crm"><div class="kc"><h6>Qualifiziert <span>3</span></h6><div class="card"><b>Brandt AG</b><small>48.000 €</small></div><div class="card"><b>Nordlicht Logistik</b><small>31.000 €</small></div></div>
+<div class="kc"><h6>Angebot <span>2</span></h6><div class="card"><b>Hansa Kliniken</b><small>120.000 €</small></div></div>
+<div class="kc"><h6>Verhandlung <span>1</span></h6><div class="card moving"><b>Müller GmbH</b><small>84.000 € · Score 92</small></div></div>
+<div class="kc"><h6>Gewonnen <span>4</span></h6><div class="card"><b>Praxis Weber</b><small>18.000 €</small></div></div></div></div>
+<div class="cur" style="left:44cqw;top:25cqw"><svg viewBox="0 0 24 24"><path d="M3 2l17 9-7.5 2L9 21z" fill="#6c5ce7" stroke="#fff" stroke-width="1.5"/></svg><em style="background:#6c5ce7">Mail-Agent</em></div>
+<div class="cur" style="left:68cqw;top:19cqw"><svg viewBox="0 0 24 24"><path d="M3 2l17 9-7.5 2L9 21z" fill="#ff9f6b" stroke="#fff" stroke-width="1.5"/></svg><em style="background:#ff9f6b">Kalender-Agent</em></div>
+<div class="cur" style="left:42cqw;top:42cqw"><svg viewBox="0 0 24 24"><path d="M3 2l17 9-7.5 2L9 21z" fill="#1164a3" stroke="#fff" stroke-width="1.5"/></svg><em style="background:#1164a3">Slack-Agent</em></div>
+<div class="cur" style="left:79cqw;top:41cqw"><svg viewBox="0 0 24 24"><path d="M3 2l17 9-7.5 2L9 21z" fill="#22c55e" stroke="#fff" stroke-width="1.5"/></svg><em style="background:#22c55e">CRM-Agent</em></div>
+<div class="bar"><span class="pill">● 02:41</span><span class="pill">🎙</span><span class="pill end">Beenden</span></div>
+</div></div>
+
+<div><p class="lbl">Bild B · 11 Sekunden später: die Fenster fliegen zurück in die Kugel, das Ergebnis bleibt</p>
+<p class="sub">Der Höhepunkt jeder Aufgabe: Jarvis rechnet vor, was er gerade erledigt hat und wie lange ein Mensch dafür gebraucht hätte. Das bleibt beim Publikum hängen.</p>
+<div class="f">
+<div class="top"><b>JARVIS</b><span style="color:#6ee7a8">● Erledigt</span></div>
+<canvas data-x="50" data-y="27" data-r="9" data-glow="1"></canvas>
+<div class="big" style="top:41cqw"><div class="n">4 Aufgaben · 11 Sekunden</div><div class="t">Ein Mensch hätte dafür etwa 14 Minuten gebraucht.</div></div>
+<div class="bar"><span class="pill">● 02:52</span><span class="pill">🎙</span><span class="pill end">Beenden</span></div>
+</div></div>
+
+<div><p class="lbl">Bild C · Dieselbe Sprache für den Rest der Demo</p>
+<p class="sub">Briefing: Jarvis öffnet keine Karte, sondern blättert sichtbar durch Kalender, Posteingang und CRM und zieht die Punkte heraus. Die dringende Mail kommt als echte macOS-Mitteilung oben rechts, bevor Jarvis unterbricht. Computer Use in der Praxis-App bleibt, ist dann ein Fenster unter mehreren.</p>
+<div class="f">
+<div class="top"><b>JARVIS</b><span>● Liest Kalender, Mails, CRM</span></div>
+<canvas data-x="50" data-y="56" data-r="6"></canvas>
+<div class="win" style="left:6cqw;top:7cqw;width:28cqw;height:19cqw;transform:rotate(-4deg)"><div class="tb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>Kalender – Heute</span></div><div style="padding:1cqw;font-size:.8cqw;line-height:2.2;color:#333"><b>09:30</b> Team-Standup<br><b style="color:#c2551b">11:00</b> Dr. Weber · Onboarding<br><b>15:00</b> frei</div></div>
+<div class="win" style="left:36cqw;top:4cqw;width:28cqw;height:19cqw"><div class="tb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>Mail – 2 dringend</span></div><div style="padding:1cqw;font-size:.8cqw;line-height:2.2;color:#333"><span style="display:inline-block;width:.5cqw;height:.5cqw;background:#6c5ce7;border-radius:50%"></span> <b>Thomas Müller</b> · Unterschrift heute?<br><span style="display:inline-block;width:.5cqw;height:.5cqw;background:#6c5ce7;border-radius:50%"></span> <b>Dr. Weber</b> · KI-Empfang Feedback</div></div>
+<div class="win" style="left:66cqw;top:7cqw;width:28cqw;height:19cqw;transform:rotate(4deg)"><div class="tb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>CRM – heißeste Deals</span></div><div style="padding:1cqw;font-size:.8cqw;line-height:2.2;color:#333"><b>Müller GmbH</b> · 84.000 € · 92<br><b>Hansa Kliniken</b> · 120.000 € · 81<br><b>Brandt AG</b> · 48.000 € · 77</div></div>
+<div class="toast" style="right:2cqw;top:4cqw"><div class="ic" style="background:#6c5ce7"></div><div><b>Mail · Thomas Müller</b><br>Unterschrift heute möglich?</div></div>
+<div class="cap" style="left:20%;right:20%;top:39cqw;text-align:center;font-size:1.6cqw">Guten Morgen, Leo. Drei Termine, zwei dringende Mails, und <span style="color:#ffc9a3">Müller will heute unterschreiben</span>.</div>
+<div class="bar"><span class="pill">● 00:14</span><span class="pill">🎙</span><span class="pill end">Beenden</span></div>
+</div></div>
+
+</div><script>
+document.querySelectorAll('canvas').forEach(c=>{const f=c.parentElement,W=f.clientWidth,H=f.clientHeight,d=2;c.width=W*d;c.height=H*d;c.style.left=0;c.style.top=0;c.style.width=W+'px';c.style.height=H+'px';
+const g=c.getContext('2d');g.scale(d,d);const cx=W*c.dataset.x/100,cy=H*c.dataset.y/100,R=W*c.dataset.r/100;
+const glow=g.createRadialGradient(cx,cy,0,cx,cy,R*(c.dataset.glow?3.2:2.2));glow.addColorStop(0,c.dataset.glow?'rgba(255,201,163,.35)':'rgba(170,180,255,.3)');glow.addColorStop(1,'rgba(170,180,255,0)');g.fillStyle=glow;g.fillRect(0,0,W,H);
+const N=c.dataset.r>8?520:300,ga=Math.PI*(3-Math.sqrt(5));for(let i=0;i<N;i++){const y=1-2*(i+.5)/N,r=Math.sqrt(1-y*y),t=ga*i+.6,x=Math.cos(t)*r,z=Math.sin(t)*r;const k=.5+.5*z;g.fillStyle=`rgba(255,255,255,${.15+.8*k})`;g.beginPath();g.arc(cx+x*R,cy+y*R,Math.max(.35,(.45+1*k)*W/900),0,7);g.fill();}});
+</script></body></html>

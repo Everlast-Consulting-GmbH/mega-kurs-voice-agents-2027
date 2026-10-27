@@ -1,0 +1,12 @@
+{
+  "name": "@jarvis/mock-events",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/server.ts",
+    "test": "vitest run && tsc --noEmit"
+  },
+  "dependencies": { "@jarvis/contracts": "workspace:*", "ws": "^8.22.0" },
+  "devDependencies": { "@types/node": "*", "@types/ws": "*", "tsx": "^4.23.15", "typescript": "^7.0.2", "vitest": "^5.0.3" }
+}

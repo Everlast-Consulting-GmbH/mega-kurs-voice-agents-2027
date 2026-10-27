@@ -1,0 +1,33 @@
+{
+  "type": "client",
+  "name": "list_leads",
+  "description": "Leads aus dem CRM, sortiert nach Score.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "description": "Nur Leads mit diesem Status; weglassen für alle",
+        "type": "string",
+        "enum": [
+          "neu",
+          "qualifiziert",
+          "angebot",
+          "verhandlung",
+          "gewonnen",
+          "verloren"
+        ]
+      },
+      "limit": {
+        "description": "Maximale Anzahl Leads, Standard 10",
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 50
+      }
+    }
+  }
+}

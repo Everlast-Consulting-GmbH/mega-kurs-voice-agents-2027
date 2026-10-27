@@ -1,0 +1,361 @@
+{
+  "get_briefing": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {}
+  },
+  "list_leads": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "status": {
+        "description": "Nur Leads mit diesem Status; weglassen für alle",
+        "type": "string",
+        "enum": [
+          "neu",
+          "qualifiziert",
+          "angebot",
+          "verhandlung",
+          "gewonnen",
+          "verloren"
+        ]
+      },
+      "limit": {
+        "description": "Maximale Anzahl Leads, Standard 10",
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 50
+      }
+    }
+  },
+  "get_lead": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "leadId": {
+        "type": "string",
+        "description": "Lead-ID aus list_leads, z. B. L-007"
+      }
+    },
+    "required": [
+      "leadId"
+    ]
+  },
+  "list_emails": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "unreadOnly": {
+        "description": "Nur ungelesene Mails",
+        "type": "boolean"
+      },
+      "limit": {
+        "description": "Maximale Anzahl Mails, Standard 10",
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 50
+      }
+    }
+  },
+  "read_email": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "emailId": {
+        "type": "string",
+        "description": "Mail-ID aus list_emails, z. B. M-003"
+      }
+    },
+    "required": [
+      "emailId"
+    ]
+  },
+  "list_events": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "date": {
+        "description": "Tag im Format YYYY-MM-DD, Standard heute",
+        "type": "string"
+      }
+    }
+  },
+  "focus_entity": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "entity": {
+        "description": "Art der Kachel: lead, mail, event, task, patient oder appointment",
+        "$ref": "#/$defs/EntityKind"
+      },
+      "entityId": {
+        "type": "string",
+        "description": "Echte ID aus dem Tool-Ergebnis"
+      },
+      "label": {
+        "type": "string",
+        "description": "Kurzer Anzeigename, z. B. Müller GmbH"
+      }
+    },
+    "required": [
+      "entity",
+      "entityId",
+      "label"
+    ],
+    "$defs": {
+      "EntityKind": {
+        "type": "string",
+        "enum": [
+          "lead",
+          "mail",
+          "event",
+          "task",
+          "patient",
+          "appointment"
+        ]
+      }
+    }
+  },
+  "render_widget": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "dataset": {
+        "description": "Fester Datensatz, der angezeigt werden soll",
+        "$ref": "#/$defs/Dataset"
+      },
+      "kind": {
+        "description": "Darstellung; weglassen für die passende Standardform",
+        "type": "string",
+        "enum": [
+          "bar_chart",
+          "line_chart",
+          "table",
+          "map",
+          "stat"
+        ]
+      },
+      "title": {
+        "description": "Optionaler Titel der Anzeige",
+        "type": "string"
+      }
+    },
+    "required": [
+      "dataset"
+    ],
+    "$defs": {
+      "Dataset": {
+        "type": "string",
+        "enum": [
+          "pipeline_by_month",
+          "leads_by_status",
+          "leads_by_city",
+          "emails_by_day"
+        ]
+      }
+    }
+  },
+  "delegate_task": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "instruction": {
+        "type": "string",
+        "description": "Vollständige Aufgabe auf Deutsch mit allem nötigen Kontext"
+      }
+    },
+    "required": [
+      "instruction"
+    ]
+  },
+  "start_computer_task": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "instruction": {
+        "type": "string",
+        "description": "Was auf dem Bildschirm erledigt werden soll, auf Deutsch, mit allen Details"
+      },
+      "mode": {
+        "description": "Ausführungsmodus; weglassen für den Standard",
+        "type": "string",
+        "enum": [
+          "pixel",
+          "assisted"
+        ]
+      }
+    },
+    "required": [
+      "instruction"
+    ]
+  },
+  "send_email": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "to": {
+        "type": "string",
+        "description": "Empfänger-Mailadresse aus den Daten"
+      },
+      "subject": {
+        "type": "string",
+        "description": "Betreff der Mail"
+      },
+      "body": {
+        "type": "string",
+        "description": "Text der Mail auf Deutsch"
+      }
+    },
+    "required": [
+      "to",
+      "subject",
+      "body"
+    ]
+  },
+  "create_event": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "Titel des Termins"
+      },
+      "start": {
+        "type": "string",
+        "description": "Beginn als ISO-Zeitpunkt, z. B. 2026-10-13T10:00:00+02:00"
+      },
+      "end": {
+        "type": "string",
+        "description": "Ende als ISO-Zeitpunkt"
+      },
+      "attendees": {
+        "description": "Mailadressen der Teilnehmer",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "Mailadresse eines Teilnehmers"
+        }
+      },
+      "leadId": {
+        "description": "Zugehörige Lead-ID, falls vorhanden",
+        "type": "string"
+      }
+    },
+    "required": [
+      "title",
+      "start",
+      "end"
+    ]
+  },
+  "place_call": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "to": {
+        "type": "string",
+        "description": "\"me\" für Leo, sonst eine Nummer im E.164-Format"
+      },
+      "purpose": {
+        "type": "string",
+        "description": "Worum es im Anruf geht, ein Satz"
+      }
+    },
+    "required": [
+      "to",
+      "purpose"
+    ]
+  },
+  "reply_email": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "emailId": {
+        "type": "string",
+        "description": "ID der Mail, auf die geantwortet wird"
+      },
+      "body": {
+        "type": "string",
+        "description": "Antworttext auf Deutsch"
+      }
+    },
+    "required": [
+      "emailId",
+      "body"
+    ]
+  },
+  "post_message": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "channel": {
+        "type": "string",
+        "description": "Team-Kanal ohne #, z. B. vertrieb"
+      },
+      "text": {
+        "type": "string",
+        "description": "Nachricht auf Deutsch"
+      }
+    },
+    "required": [
+      "channel",
+      "text"
+    ]
+  },
+  "move_deal": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "leadId": {
+        "type": "string",
+        "description": "Lead-ID, z. B. L-007"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "neu",
+          "qualifiziert",
+          "angebot",
+          "verhandlung",
+          "gewonnen",
+          "verloren"
+        ],
+        "description": "Neue Pipeline-Phase"
+      }
+    },
+    "required": [
+      "leadId",
+      "status"
+    ]
+  },
+  "handle_request": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "instruction": {
+        "type": "string",
+        "description": "Mehrteiliger Auftrag über mehrere Programme, z. B. 'Kümmer dich um die Müller GmbH'"
+      }
+    },
+    "required": [
+      "instruction"
+    ]
+  },
+  "resolve_approval": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "approvalId": {
+        "type": "string",
+        "description": "ID der offenen Freigabe aus dem HUD-Hinweis"
+      },
+      "approved": {
+        "type": "boolean",
+        "description": "true bei ausdrücklichem Ja, false bei Nein"
+      }
+    },
+    "required": [
+      "approvalId",
+      "approved"
+    ]
+  }
+}

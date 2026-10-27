@@ -1,0 +1,30 @@
+{
+  "type": "client",
+  "name": "start_computer_task",
+  "description": "Aufgabe per Computer Use auf dem Agent-Bildschirm ausführen. Gibt sofort eine taskId zurück: nur angenommen, nicht erledigt. Ergebnis folgt als contextual update. Vorher kurz bestätigen.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "instruction": {
+        "type": "string",
+        "description": "Was auf dem Bildschirm erledigt werden soll, auf Deutsch, mit allen Details"
+      },
+      "mode": {
+        "description": "Ausführungsmodus; weglassen für den Standard",
+        "type": "string",
+        "enum": [
+          "pixel",
+          "assisted"
+        ]
+      }
+    },
+    "required": [
+      "instruction"
+    ]
+  }
+}

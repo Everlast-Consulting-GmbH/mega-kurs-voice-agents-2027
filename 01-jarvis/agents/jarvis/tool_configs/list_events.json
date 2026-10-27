@@ -1,0 +1,19 @@
+{
+  "type": "client",
+  "name": "list_events",
+  "description": "Kalendertermine eines Tages.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "date": {
+        "description": "Tag im Format YYYY-MM-DD, Standard heute",
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "client",
+  "name": "delegate_task",
+  "description": "Mehrschrittige Aufgabe an den Orchestrator (Claude) übergeben. Gibt sofort eine taskId zurück: nur angenommen, nicht erledigt. Ergebnis folgt als contextual update. Vorher kurz bestätigen.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "instruction": {
+        "type": "string",
+        "description": "Vollständige Aufgabe auf Deutsch mit allem nötigen Kontext"
+      }
+    },
+    "required": [
+      "instruction"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+[
+  {"id":"x1","ts":1760000000000,"sessionId":"demo","type":"voice.state","payload":{"state":"dancing"}},
+  {"id":"x2","ts":1760000000000,"sessionId":"demo","type":"unknown.type","payload":{}},
+  {"id":"x3","ts":1760000000000,"sessionId":"demo","type":"tool.finished","payload":{"callId":"c1","tool":"x","ok":true}},
+  {"ts":1760000000000,"sessionId":"demo","type":"voice.state","payload":{"state":"idle"}},
+  {"id":"x5","ts":"gestern","sessionId":"demo","type":"voice.state","payload":{"state":"idle"}},
+  {"id":"x6","ts":1760000000000,"sessionId":"demo","type":"notice","payload":{"noticeId":"n1","severity":"panic","title":"x","detail":"y"}},
+  {"id":"x7","ts":1760000000000,"sessionId":"demo","type":"notice","payload":{"noticeId":"n1","severity":"urgent","detail":"ohne Titel"}}
+]

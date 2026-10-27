@@ -1,0 +1,35 @@
+{
+  "type": "client",
+  "name": "move_deal",
+  "description": "Deal im CRM in eine andere Pipeline-Phase verschieben.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "leadId": {
+        "type": "string",
+        "description": "Lead-ID, z. B. L-007"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "neu",
+          "qualifiziert",
+          "angebot",
+          "verhandlung",
+          "gewonnen",
+          "verloren"
+        ],
+        "description": "Neue Pipeline-Phase"
+      }
+    },
+    "required": [
+      "leadId",
+      "status"
+    ]
+  }
+}

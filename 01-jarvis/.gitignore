@@ -1,0 +1,34 @@
+# Dependencies and builds
+node_modules/
+.next/
+dist/
+.venv/
+__pycache__/
+*.pyc
+*.tsbuildinfo
+next-env.d.ts
+.pytest_cache/
+.ruff_cache/
+
+# Secrets: only .env.example belongs in git
+.env
+.env.*
+!.env.example
+
+# Local runtime data
+.DS_Store
+*.sqlite
+*.db
+*.log
+.demo/
+.playwright-mcp/
+services/cu-worker/artifacts/
+services/mock-world/data/*
+!services/mock-world/data/.gitkeep
+
+# Test output and screenshots
+evidence/
+test-results/
+playwright-report/
+agents/jarvis/results/
+agents/jarvis/voice-samples/

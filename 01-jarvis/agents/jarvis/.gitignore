@@ -1,0 +1,7 @@
+node_modules/
+.cache/
+results/
+voice-samples/*.mp3
+voice-samples/*.json
+voice-samples/*.csv
+benchmark-tests.json

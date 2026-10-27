@@ -1,0 +1,2214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "event": {
+      "$ref": "#/$defs/JarvisEvent"
+    },
+    "lead": {
+      "$ref": "#/$defs/Lead"
+    },
+    "email": {
+      "$ref": "#/$defs/Email"
+    },
+    "calendarEvent": {
+      "$ref": "#/$defs/CalendarEvent"
+    },
+    "chatMessage": {
+      "$ref": "#/$defs/ChatMessage"
+    },
+    "patient": {
+      "$ref": "#/$defs/Patient"
+    },
+    "appointment": {
+      "$ref": "#/$defs/Appointment"
+    },
+    "toolResult": {
+      "$ref": "#/$defs/ToolResult"
+    },
+    "asyncAccepted": {
+      "$ref": "#/$defs/AsyncAccepted"
+    }
+  },
+  "required": [
+    "event",
+    "lead",
+    "email",
+    "calendarEvent",
+    "chatMessage",
+    "patient",
+    "appointment",
+    "toolResult",
+    "asyncAccepted"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "JarvisEvent": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/VoiceStateEvent"
+        },
+        {
+          "$ref": "#/$defs/TranscriptDeltaEvent"
+        },
+        {
+          "$ref": "#/$defs/TranscriptFinalEvent"
+        },
+        {
+          "$ref": "#/$defs/ToolStartedEvent"
+        },
+        {
+          "$ref": "#/$defs/ToolFinishedEvent"
+        },
+        {
+          "$ref": "#/$defs/TaskCreatedEvent"
+        },
+        {
+          "$ref": "#/$defs/TaskProgressEvent"
+        },
+        {
+          "$ref": "#/$defs/TaskDoneEvent"
+        },
+        {
+          "$ref": "#/$defs/TaskFailedEvent"
+        },
+        {
+          "$ref": "#/$defs/CuFrameEvent"
+        },
+        {
+          "$ref": "#/$defs/CuActionEvent"
+        },
+        {
+          "$ref": "#/$defs/CuModeEvent"
+        },
+        {
+          "$ref": "#/$defs/CallStateEvent"
+        },
+        {
+          "$ref": "#/$defs/ApprovalRequestedEvent"
+        },
+        {
+          "$ref": "#/$defs/ApprovalResolvedEvent"
+        },
+        {
+          "$ref": "#/$defs/UiFocusEvent"
+        },
+        {
+          "$ref": "#/$defs/UiWidgetEvent"
+        },
+        {
+          "$ref": "#/$defs/BriefingItemEvent"
+        },
+        {
+          "$ref": "#/$defs/MetricsLatencyEvent"
+        },
+        {
+          "$ref": "#/$defs/ToolLearnedEvent"
+        },
+        {
+          "$ref": "#/$defs/NoticeEvent"
+        },
+        {
+          "$ref": "#/$defs/RunPlannedEvent"
+        },
+        {
+          "$ref": "#/$defs/AgentSpawnedEvent"
+        },
+        {
+          "$ref": "#/$defs/AgentActionEvent"
+        },
+        {
+          "$ref": "#/$defs/AgentFinishedEvent"
+        },
+        {
+          "$ref": "#/$defs/RunSummaryEvent"
+        }
+      ]
+    },
+    "VoiceStateEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "voice.state"
+        },
+        "payload": {
+          "$ref": "#/$defs/VoiceStatePayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "VoiceStatePayload": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "$ref": "#/$defs/VoiceState"
+        }
+      },
+      "required": [
+        "state"
+      ],
+      "additionalProperties": false
+    },
+    "VoiceState": {
+      "type": "string",
+      "enum": [
+        "idle",
+        "listening",
+        "thinking",
+        "speaking",
+        "acting"
+      ]
+    },
+    "TranscriptDeltaEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "transcript.delta"
+        },
+        "payload": {
+          "$ref": "#/$defs/TranscriptDeltaPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "TranscriptDeltaPayload": {
+      "type": "object",
+      "properties": {
+        "turnId": {
+          "type": "string"
+        },
+        "role": {
+          "$ref": "#/$defs/Role"
+        },
+        "text": {
+          "type": "string",
+          "description": "Text appended to this turn"
+        }
+      },
+      "required": [
+        "turnId",
+        "role",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "Role": {
+      "type": "string",
+      "enum": [
+        "user",
+        "assistant"
+      ]
+    },
+    "TranscriptFinalEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "transcript.final"
+        },
+        "payload": {
+          "$ref": "#/$defs/TranscriptFinalPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "TranscriptFinalPayload": {
+      "type": "object",
+      "properties": {
+        "turnId": {
+          "type": "string"
+        },
+        "role": {
+          "$ref": "#/$defs/Role"
+        },
+        "text": {
+          "type": "string",
+          "description": "Full text of the turn"
+        },
+        "words": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WordTiming"
+          }
+        }
+      },
+      "required": [
+        "turnId",
+        "role",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "WordTiming": {
+      "type": "object",
+      "properties": {
+        "word": {
+          "type": "string"
+        },
+        "startMs": {
+          "type": "number"
+        },
+        "endMs": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "word",
+        "startMs",
+        "endMs"
+      ],
+      "additionalProperties": false
+    },
+    "ToolStartedEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "tool.started"
+        },
+        "payload": {
+          "$ref": "#/$defs/ToolStartedPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "ToolStartedPayload": {
+      "type": "object",
+      "properties": {
+        "callId": {
+          "type": "string"
+        },
+        "tool": {
+          "type": "string"
+        },
+        "args": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
+        },
+        "taskId": {
+          "description": "Set when called inside a delegated task",
+          "type": "string"
+        }
+      },
+      "required": [
+        "callId",
+        "tool",
+        "args"
+      ],
+      "additionalProperties": false
+    },
+    "ToolFinishedEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "tool.finished"
+        },
+        "payload": {
+          "$ref": "#/$defs/ToolFinishedPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "ToolFinishedPayload": {
+      "type": "object",
+      "properties": {
+        "callId": {
+          "type": "string"
+        },
+        "tool": {
+          "type": "string"
+        },
+        "ok": {
+          "type": "boolean"
+        },
+        "summary": {
+          "type": "string",
+          "description": "One line, German, shown in the HUD timeline"
+        },
+        "durationMs": {
+          "type": "number"
+        },
+        "taskId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "callId",
+        "tool",
+        "ok",
+        "summary",
+        "durationMs"
+      ],
+      "additionalProperties": false
+    },
+    "TaskCreatedEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "task.created"
+        },
+        "payload": {
+          "$ref": "#/$defs/TaskCreatedPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "TaskCreatedPayload": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "research",
+            "computer_use",
+            "call",
+            "other"
+          ]
+        }
+      },
+      "required": [
+        "taskId",
+        "title",
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "TaskProgressEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "task.progress"
+        },
+        "payload": {
+          "$ref": "#/$defs/TaskProgressPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "TaskProgressPayload": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "step": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "totalSteps": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "taskId",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "TaskDoneEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "task.done"
+        },
+        "payload": {
+          "$ref": "#/$defs/TaskDonePayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "TaskDonePayload": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "taskId",
+        "result"
+      ],
+      "additionalProperties": false
+    },
+    "TaskFailedEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "task.failed"
+        },
+        "payload": {
+          "$ref": "#/$defs/TaskFailedPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "TaskFailedPayload": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "taskId",
+        "error"
+      ],
+      "additionalProperties": false
+    },
+    "CuFrameEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "cu.frame"
+        },
+        "payload": {
+          "$ref": "#/$defs/CuFramePayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "CuFramePayload": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "PNG/JPEG/SVG URL or data URL of the agent screen"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "height": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "taskId",
+        "imageUrl",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "CuActionEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "cu.action"
+        },
+        "payload": {
+          "$ref": "#/$defs/CuActionPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "CuActionPayload": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string"
+        },
+        "action": {
+          "$ref": "#/$defs/CuActionKind"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "target": {
+          "description": "Bounding box of the element being targeted, screen pixels",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
+        },
+        "text": {
+          "description": "Typed text or key name",
+          "type": "string"
+        },
+        "caption": {
+          "type": "string",
+          "description": "German subtitle, e.g. Klicke auf 'Neuer Termin'"
+        },
+        "step": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "totalSteps": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "taskId",
+        "action",
+        "caption",
+        "step"
+      ],
+      "additionalProperties": false
+    },
+    "CuActionKind": {
+      "type": "string",
+      "enum": [
+        "click",
+        "double_click",
+        "type",
+        "key",
+        "scroll",
+        "move",
+        "drag",
+        "wait",
+        "screenshot"
+      ]
+    },
+    "CuModeEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "cu.mode"
+        },
+        "payload": {
+          "$ref": "#/$defs/CuModePayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "CuModePayload": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "pixel",
+            "assisted"
+          ]
+        },
+        "vncUrl": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "taskId",
+        "mode"
+      ],
+      "additionalProperties": false
+    },
+    "CallStateEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "call.state"
+        },
+        "payload": {
+          "$ref": "#/$defs/CallStatePayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "CallStatePayload": {
+      "type": "object",
+      "properties": {
+        "callId": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/CallStatus"
+        },
+        "to": {
+          "type": "string",
+          "description": "Display name or masked number"
+        },
+        "durationMs": {
+          "type": "number"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "callId",
+        "status",
+        "to"
+      ],
+      "additionalProperties": false
+    },
+    "CallStatus": {
+      "type": "string",
+      "enum": [
+        "dialing",
+        "ringing",
+        "connected",
+        "ended",
+        "failed"
+      ]
+    },
+    "ApprovalRequestedEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "approval.requested"
+        },
+        "payload": {
+          "$ref": "#/$defs/ApprovalRequestedPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "ApprovalRequestedPayload": {
+      "type": "object",
+      "properties": {
+        "approvalId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "risk": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      },
+      "required": [
+        "approvalId",
+        "title",
+        "detail",
+        "risk"
+      ],
+      "additionalProperties": false
+    },
+    "ApprovalResolvedEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "approval.resolved"
+        },
+        "payload": {
+          "$ref": "#/$defs/ApprovalResolvedPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "ApprovalResolvedPayload": {
+      "type": "object",
+      "properties": {
+        "approvalId": {
+          "type": "string"
+        },
+        "approved": {
+          "type": "boolean"
+        },
+        "via": {
+          "type": "string",
+          "enum": [
+            "click",
+            "voice"
+          ]
+        }
+      },
+      "required": [
+        "approvalId",
+        "approved",
+        "via"
+      ],
+      "additionalProperties": false
+    },
+    "UiFocusEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "ui.focus"
+        },
+        "payload": {
+          "$ref": "#/$defs/UiFocusPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "UiFocusPayload": {
+      "type": "object",
+      "properties": {
+        "entity": {
+          "$ref": "#/$defs/EntityKind"
+        },
+        "entityId": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "durationMs": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "entity",
+        "entityId",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "EntityKind": {
+      "type": "string",
+      "enum": [
+        "lead",
+        "mail",
+        "event",
+        "task",
+        "patient",
+        "appointment"
+      ]
+    },
+    "UiWidgetEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "ui.widget"
+        },
+        "payload": {
+          "$ref": "#/$defs/UiWidgetPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "UiWidgetPayload": {
+      "type": "object",
+      "properties": {
+        "widgetId": {
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/WidgetKind"
+        },
+        "title": {
+          "type": "string"
+        },
+        "data": {
+          "description": "Kind-specific data, see docs in tools.ts renderWidget"
+        }
+      },
+      "required": [
+        "widgetId",
+        "kind",
+        "title",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    "WidgetKind": {
+      "type": "string",
+      "enum": [
+        "bar_chart",
+        "line_chart",
+        "table",
+        "map",
+        "stat"
+      ]
+    },
+    "BriefingItemEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "briefing.item"
+        },
+        "payload": {
+          "$ref": "#/$defs/BriefingItemPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "BriefingItemPayload": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "description": "0-based; index 0 starts a new briefing in the HUD"
+        },
+        "total": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "icon": {
+          "type": "string",
+          "enum": [
+            "calendar",
+            "mail",
+            "lead",
+            "alert",
+            "weather",
+            "money",
+            "task"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "metric": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "index",
+        "total",
+        "icon",
+        "title",
+        "detail"
+      ],
+      "additionalProperties": false
+    },
+    "MetricsLatencyEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "metrics.latency"
+        },
+        "payload": {
+          "$ref": "#/$defs/MetricsLatencyPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "MetricsLatencyPayload": {
+      "type": "object",
+      "properties": {
+        "turnId": {
+          "type": "string"
+        },
+        "firstAudioMs": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "turnId",
+        "firstAudioMs"
+      ],
+      "additionalProperties": false
+    },
+    "ToolLearnedEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "tool.learned"
+        },
+        "payload": {
+          "$ref": "#/$defs/ToolLearnedPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "ToolLearnedPayload": {
+      "type": "object",
+      "properties": {
+        "tool": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "endpoints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "method": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "method",
+              "path"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "tool",
+        "description",
+        "endpoints"
+      ],
+      "additionalProperties": false
+    },
+    "NoticeEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "notice"
+        },
+        "payload": {
+          "$ref": "#/$defs/NoticePayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "NoticePayload": {
+      "type": "object",
+      "properties": {
+        "noticeId": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "info",
+            "urgent"
+          ],
+          "description": "urgent: Jarvis interrupts proactively"
+        },
+        "title": {
+          "type": "string",
+          "description": "German, shown on the alert card"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "entity": {
+          "$ref": "#/$defs/EntityKind"
+        },
+        "entityId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "noticeId",
+        "severity",
+        "title",
+        "detail"
+      ],
+      "additionalProperties": false
+    },
+    "RunPlannedEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "run.planned"
+        },
+        "payload": {
+          "$ref": "#/$defs/RunPlannedPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "RunPlannedPayload": {
+      "type": "object",
+      "properties": {
+        "runId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string",
+          "description": "German, e.g. 'Müller GmbH: Unterschrift vorbereiten'"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "agentId": {
+                "type": "string"
+              },
+              "app": {
+                "$ref": "#/$defs/AgentApp"
+              },
+              "summary": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "agentId",
+              "app",
+              "summary"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "approvalId": {
+          "description": "Set when the plan needs one approval before it runs",
+          "type": "string"
+        }
+      },
+      "required": [
+        "runId",
+        "title",
+        "steps"
+      ],
+      "additionalProperties": false
+    },
+    "AgentApp": {
+      "type": "string",
+      "enum": [
+        "mail",
+        "calendar",
+        "chat",
+        "crm",
+        "praxis"
+      ]
+    },
+    "AgentSpawnedEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "agent.spawned"
+        },
+        "payload": {
+          "$ref": "#/$defs/AgentSpawnedPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "AgentSpawnedPayload": {
+      "type": "object",
+      "properties": {
+        "runId": {
+          "type": "string"
+        },
+        "agentId": {
+          "type": "string"
+        },
+        "app": {
+          "$ref": "#/$defs/AgentApp"
+        },
+        "label": {
+          "type": "string",
+          "description": "German chip text, e.g. 'Mail · schreibt'"
+        }
+      },
+      "required": [
+        "runId",
+        "agentId",
+        "app",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "AgentActionEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "agent.action"
+        },
+        "payload": {
+          "$ref": "#/$defs/AgentActionPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "AgentActionPayload": {
+      "type": "object",
+      "properties": {
+        "runId": {
+          "type": "string"
+        },
+        "agentId": {
+          "type": "string"
+        },
+        "app": {
+          "$ref": "#/$defs/AgentApp"
+        },
+        "action": {
+          "type": "string",
+          "enum": [
+            "open",
+            "select",
+            "type",
+            "move",
+            "create",
+            "send"
+          ],
+          "description": "open app/view, select a record, type text, move a card/event, create a record, send"
+        },
+        "entityId": {
+          "description": "Record the action targets (email, event, lead, message id)",
+          "type": "string"
+        },
+        "field": {
+          "description": "For type: which field, e.g. 'body', 'subject'",
+          "type": "string"
+        },
+        "text": {
+          "description": "For type: the full text to type; the HUD animates it",
+          "type": "string"
+        },
+        "from": {
+          "description": "For move: old column/slot, e.g. 'angebot'",
+          "type": "string"
+        },
+        "to": {
+          "description": "For move: new column/slot, e.g. 'verhandlung'",
+          "type": "string"
+        },
+        "caption": {
+          "type": "string",
+          "description": "German, one short line describing the action"
+        }
+      },
+      "required": [
+        "runId",
+        "agentId",
+        "app",
+        "action",
+        "caption"
+      ],
+      "additionalProperties": false
+    },
+    "AgentFinishedEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "agent.finished"
+        },
+        "payload": {
+          "$ref": "#/$defs/AgentFinishedPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "AgentFinishedPayload": {
+      "type": "object",
+      "properties": {
+        "runId": {
+          "type": "string"
+        },
+        "agentId": {
+          "type": "string"
+        },
+        "ok": {
+          "type": "boolean"
+        },
+        "summary": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "runId",
+        "agentId",
+        "ok",
+        "summary"
+      ],
+      "additionalProperties": false
+    },
+    "RunSummaryEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991,
+          "description": "Unix epoch milliseconds"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "run.summary"
+        },
+        "payload": {
+          "$ref": "#/$defs/RunSummaryPayload"
+        }
+      },
+      "required": [
+        "id",
+        "ts",
+        "sessionId",
+        "type",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "RunSummaryPayload": {
+      "type": "object",
+      "properties": {
+        "runId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "tasks": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "durationMs": {
+          "type": "number"
+        },
+        "humanMinutes": {
+          "type": "number",
+          "description": "Rough estimate of manual effort, shown as the punchline"
+        }
+      },
+      "required": [
+        "runId",
+        "title",
+        "tasks",
+        "durationMs",
+        "humanMinutes"
+      ],
+      "additionalProperties": false
+    },
+    "Lead": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "Contact person"
+        },
+        "company": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "lat": {
+          "type": "number"
+        },
+        "lng": {
+          "type": "number"
+        },
+        "status": {
+          "$ref": "#/$defs/LeadStatus"
+        },
+        "valueEur": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "lastContactAt": {
+          "type": "string"
+        },
+        "nextStep": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "company",
+        "email",
+        "phone",
+        "city",
+        "lat",
+        "lng",
+        "status",
+        "valueEur",
+        "score",
+        "lastContactAt",
+        "nextStep",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "LeadStatus": {
+      "type": "string",
+      "enum": [
+        "neu",
+        "qualifiziert",
+        "angebot",
+        "verhandlung",
+        "gewonnen",
+        "verloren"
+      ]
+    },
+    "Email": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "fromName": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "receivedAt": {
+          "type": "string"
+        },
+        "unread": {
+          "type": "boolean"
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "normal",
+            "high"
+          ]
+        },
+        "leadId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "folder": {
+          "type": "string",
+          "enum": [
+            "inbox",
+            "sent"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "from",
+        "fromName",
+        "to",
+        "subject",
+        "body",
+        "receivedAt",
+        "unread",
+        "priority",
+        "leadId",
+        "folder"
+      ],
+      "additionalProperties": false
+    },
+    "CalendarEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "start": {
+          "type": "string"
+        },
+        "end": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "attendees": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "leadId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "start",
+        "end",
+        "location",
+        "attendees",
+        "leadId"
+      ],
+      "additionalProperties": false
+    },
+    "ChatMessage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string",
+          "description": "Channel name without #, e.g. 'vertrieb'"
+        },
+        "author": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "sentAt": {
+          "type": "string"
+        },
+        "fromJarvis": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "channel",
+        "author",
+        "text",
+        "sentAt",
+        "fromJarvis"
+      ],
+      "additionalProperties": false
+    },
+    "Patient": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "insurance": {
+          "type": "string",
+          "enum": [
+            "gesetzlich",
+            "privat"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "firstName",
+        "lastName",
+        "birthDate",
+        "phone",
+        "insurance"
+      ],
+      "additionalProperties": false
+    },
+    "Appointment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "patientId": {
+          "type": "string"
+        },
+        "practitioner": {
+          "type": "string"
+        },
+        "start": {
+          "type": "string"
+        },
+        "durationMin": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "reason": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "geplant",
+            "bestaetigt",
+            "abgesagt"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "patientId",
+        "practitioner",
+        "start",
+        "durationMin",
+        "reason",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "ToolResult": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "result": {},
+        "error": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "ok"
+      ],
+      "additionalProperties": false
+    },
+    "AsyncAccepted": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "taskId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "title": "JarvisContracts"
+}

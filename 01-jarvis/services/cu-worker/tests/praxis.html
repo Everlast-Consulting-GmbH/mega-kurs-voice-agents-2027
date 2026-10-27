@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="de"><meta charset="utf-8"><title>Praxis-Testseite</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eef3f8;color:#11283b;font:20px Arial}
+header{height:80px;background:#123c53;color:white;padding:22px 40px}main{padding:24px 40px;max-width:900px}
+button,input{font:20px Arial;padding:12px;border:1px solid #a7bfce;border-radius:6px}button{background:#12687c;color:white;cursor:pointer;min-width:180px}
+label{display:block;margin-top:14px}input{display:block;width:500px;margin-top:5px}section{margin-top:20px}[hidden]{display:none!important}
+#save{margin-top:20px}#confirmation{padding:20px;background:#d0f4df}h1{font-size:24px;margin:0 0 16px}
+</style>
+<header>Praxis · Lokale Testseite</header><main>
+<a id="patients" href="#" style="display:inline-block;padding:12px;background:#12687c;color:white">Patienten &amp; Termine</a>
+<section id="search-panel" hidden><label>Patienten suchen<input id="search" type="search"></label>
+<button id="patient" style="margin-top:16px" hidden>Dr. Anna Weber · P-001</button></section>
+<section id="detail" hidden><h1>Dr. Anna Weber</h1><p>Privat versichert · 12.03.1978</p><button id="new">Neuer Termin</button></section>
+<form id="form" hidden><h1>Neuer Termin · Dr. Anna Weber</h1>
+<label>Datum (JJJJ-MM-TT)<input id="date" type="date" required></label>
+<label>Uhrzeit</label><div id="slots"></div><input id="time" type="hidden" required>
+<label>Grund<input id="reason" required></label>
+<button id="save">Termin speichern</button></form>
+<p id="confirmation" hidden></p></main>
+<script>
+const byId=id=>document.getElementById(id);
+byId('patients').onclick=()=>{byId('search-panel').hidden=false};
+byId('search').oninput=e=>{byId('patient').hidden=!e.target.value.toLowerCase().includes('weber')};
+byId('patient').onclick=()=>{byId('search-panel').hidden=true;byId('detail').hidden=false};
+byId('new').onclick=()=>{byId('detail').hidden=true;byId('patients').hidden=true;byId('form').hidden=false};
+byId('date').onchange=async()=>{const slots=await(await fetch('/praxis/api/slots?date='+byId('date').value)).json();byId('slots').innerHTML='<button type="button" aria-label="10:00 Uhr" data-start="'+slots[0].start+'">10:00</button>';byId('slots').firstChild.onclick=()=>byId('time').value='10:00'};
+byId('form').onsubmit=async e=>{e.preventDefault(); const response=await fetch('/praxis/api/appointments',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({date:byId('date').value,time:byId('time').value,reason:byId('reason').value})}); if(!response.ok)return;const row=await response.json();byId('form').hidden=true;byId('confirmation').hidden=false;byId('confirmation').textContent='Termin gespeichert · '+row.id+' · Dr. Anna Weber · '+row.start+' · '+row.reason};
+</script></html>

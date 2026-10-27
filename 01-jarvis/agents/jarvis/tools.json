@@ -1,0 +1,76 @@
+{
+    "tools": [
+        {
+            "type": "client",
+            "config": "tool_configs/get_briefing.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/list_leads.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/get_lead.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/list_emails.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/read_email.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/list_events.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/focus_entity.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/render_widget.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/delegate_task.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/start_computer_task.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/send_email.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/create_event.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/place_call.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/reply_email.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/post_message.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/move_deal.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/handle_request.json"
+        },
+        {
+            "type": "client",
+            "config": "tool_configs/resolve_approval.json"
+        }
+    ]
+}

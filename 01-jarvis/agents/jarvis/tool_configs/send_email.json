@@ -1,0 +1,32 @@
+{
+  "type": "client",
+  "name": "send_email",
+  "description": "Mail senden (verlangt Freigabe). Gibt sofort eine taskId zurück: nur angenommen, nicht erledigt. Ergebnis folgt als contextual update. Vorher kurz bestätigen.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "to": {
+        "type": "string",
+        "description": "Empfänger-Mailadresse aus den Daten"
+      },
+      "subject": {
+        "type": "string",
+        "description": "Betreff der Mail"
+      },
+      "body": {
+        "type": "string",
+        "description": "Text der Mail auf Deutsch"
+      }
+    },
+    "required": [
+      "to",
+      "subject",
+      "body"
+    ]
+  }
+}

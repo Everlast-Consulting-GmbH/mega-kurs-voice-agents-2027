@@ -1,0 +1,80 @@
+# Local dev: `make up` starts everything that is containerised.
+# The HUD (pnpm) runs on the host. Keys come from ./.env (or JARVIS_ENV_FILE).
+name: jarvis
+services:
+  mock-world:
+    build:
+      context: .
+      dockerfile: services/mock-world/Dockerfile
+    ports:
+      - "8700:8700"
+    environment:
+      MOCK_WORLD_DB: /app/data/world.sqlite
+    volumes:
+      - ./services/mock-world/data:/app/data
+    # Match the host owner for the local SQLite bind mount (macOS/Linux).
+    user: "${MOCK_WORLD_UID:-1000}:${MOCK_WORLD_GID:-1000}"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8700/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  orchestrator:
+    build:
+      context: .
+      dockerfile: services/orchestrator/Dockerfile
+    ports:
+      - "127.0.0.1:8787:8787"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - path: ${JARVIS_ENV_FILE:-./.env}
+        required: false
+    environment:
+      MOCK_WORLD_URL: http://mock-world:8700
+      CU_WORKER_URL: http://cu-worker:8800
+      # Optional telephony service for place_call (not included in this repo).
+      VOICE_AGENT_URL: ${VOICE_AGENT_URL:-http://host.docker.internal:8900}
+      ORCHESTRATOR_MODEL: ${ORCHESTRATOR_MODEL:-claude-haiku-5-5}
+    depends_on:
+      mock-world:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8787/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
+
+  cu-worker:
+    build:
+      context: .
+      dockerfile: services/cu-worker/Dockerfile
+    ports:
+      - "127.0.0.1:8800:8800"
+      - "127.0.0.1:6080:6080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - path: ${JARVIS_ENV_FILE:-./.env}
+        required: false
+    environment:
+      PRAXIS_URL: ${PRAXIS_URL:-http://mock-world:8700/praxis}
+      ORCHESTRATOR_URL: ${CU_ORCHESTRATOR_URL:-http://orchestrator:8787}
+      CU_PUBLIC_URL: ${CU_PUBLIC_URL:-http://localhost:8800}
+      CU_VNC_URL: ${CU_VNC_URL:-http://localhost:6080/vnc.html?autoconnect=1&resize=scale}
+    shm_size: 512mb
+    volumes:
+      - ./services/cu-worker/artifacts/runtime:/data
+    depends_on:
+      mock-world:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8800/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      start_period: 15s
+      retries: 3
+    restart: unless-stopped

@@ -1,0 +1,19 @@
+[project]
+name = "jarvis-mock-world"
+version = "0.1.0"
+description = "Deterministic local demo world for Jarvis"
+requires-python = ">=3.12"
+dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1", "faker==40.41.0", "jarvis-contracts"]
+
+[tool.uv.sources]
+jarvis-contracts = { workspace = true }
+
+[dependency-groups]
+dev = ["pytest>=8", "httpx>=0.27"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["jarvis_mock_world"]

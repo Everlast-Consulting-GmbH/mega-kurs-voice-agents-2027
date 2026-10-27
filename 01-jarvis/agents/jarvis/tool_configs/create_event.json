@@ -1,0 +1,44 @@
+{
+  "type": "client",
+  "name": "create_event",
+  "description": "Kalendertermin anlegen.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "Titel des Termins"
+      },
+      "start": {
+        "type": "string",
+        "description": "Beginn als ISO-Zeitpunkt, z. B. 2026-10-13T10:00:00+02:00"
+      },
+      "end": {
+        "type": "string",
+        "description": "Ende als ISO-Zeitpunkt"
+      },
+      "attendees": {
+        "description": "Mailadressen der Teilnehmer",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "Mailadresse eines Teilnehmers"
+        }
+      },
+      "leadId": {
+        "description": "Zugehörige Lead-ID, falls vorhanden",
+        "type": "string"
+      }
+    },
+    "required": [
+      "title",
+      "start",
+      "end"
+    ]
+  }
+}

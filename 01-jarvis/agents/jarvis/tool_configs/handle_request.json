@@ -1,0 +1,22 @@
+{
+  "type": "client",
+  "name": "handle_request",
+  "description": "Mehrteiliger Auftrag: mehrere Agenten arbeiten parallel und sichtbar in Mail, Kalender, Chat und CRM. Für alles, was mehrere Programme betrifft. Gibt sofort eine taskId zurück: nur angenommen, nicht erledigt. Ergebnis folgt als contextual update. Vorher kurz bestätigen.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "instruction": {
+        "type": "string",
+        "description": "Mehrteiliger Auftrag über mehrere Programme, z. B. 'Kümmer dich um die Müller GmbH'"
+      }
+    },
+    "required": [
+      "instruction"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "client",
+  "name": "reply_email",
+  "description": "Auf eine Mail antworten; die Antwort landet im Gesendet-Ordner.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "emailId": {
+        "type": "string",
+        "description": "ID der Mail, auf die geantwortet wird"
+      },
+      "body": {
+        "type": "string",
+        "description": "Antworttext auf Deutsch"
+      }
+    },
+    "required": [
+      "emailId",
+      "body"
+    ]
+  }
+}

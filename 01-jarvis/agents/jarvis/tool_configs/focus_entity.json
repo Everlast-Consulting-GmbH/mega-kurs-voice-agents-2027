@@ -1,0 +1,40 @@
+{
+  "type": "client",
+  "name": "focus_entity",
+  "description": "Hebt eine Kachel im Dashboard hervor, über die gerade gesprochen wird.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "auto",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "entity": {
+        "type": "string",
+        "enum": [
+          "lead",
+          "mail",
+          "event",
+          "task",
+          "patient",
+          "appointment"
+        ],
+        "description": "Art der Kachel: lead, mail, event, task, patient oder appointment"
+      },
+      "entityId": {
+        "type": "string",
+        "description": "Echte ID aus dem Tool-Ergebnis"
+      },
+      "label": {
+        "type": "string",
+        "description": "Kurzer Anzeigename, z. B. Müller GmbH"
+      }
+    },
+    "required": [
+      "entity",
+      "entityId",
+      "label"
+    ]
+  }
+}

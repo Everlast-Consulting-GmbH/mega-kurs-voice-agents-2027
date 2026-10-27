@@ -1,0 +1,27 @@
+{
+  "type": "client",
+  "name": "resolve_approval",
+  "description": "Offene Freigabe annehmen oder ablehnen (per Stimme).",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "auto",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "approvalId": {
+        "type": "string",
+        "description": "ID der offenen Freigabe aus dem HUD-Hinweis"
+      },
+      "approved": {
+        "type": "boolean",
+        "description": "true bei ausdrücklichem Ja, false bei Nein"
+      }
+    },
+    "required": [
+      "approvalId",
+      "approved"
+    ]
+  }
+}

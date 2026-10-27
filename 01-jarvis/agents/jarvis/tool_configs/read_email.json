@@ -1,0 +1,22 @@
+{
+  "type": "client",
+  "name": "read_email",
+  "description": "Eine Mail vollständig lesen.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "force",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "emailId": {
+        "type": "string",
+        "description": "Mail-ID aus list_emails, z. B. M-003"
+      }
+    },
+    "required": [
+      "emailId"
+    ]
+  }
+}

@@ -1,0 +1,374 @@
+[
+  {
+    "id": "e1",
+    "ts": 1760000000000,
+    "sessionId": "demo",
+    "type": "voice.state",
+    "payload": {
+      "state": "listening"
+    }
+  },
+  {
+    "id": "e2",
+    "ts": 1760000000001,
+    "sessionId": "demo",
+    "type": "transcript.delta",
+    "payload": {
+      "turnId": "t1",
+      "role": "user",
+      "text": "Was ist heute "
+    }
+  },
+  {
+    "id": "e3",
+    "ts": 1760000000002,
+    "sessionId": "demo",
+    "type": "transcript.final",
+    "payload": {
+      "turnId": "t1",
+      "role": "user",
+      "text": "Was ist heute wichtig?",
+      "words": [
+        {
+          "word": "Was",
+          "startMs": 0,
+          "endMs": 180
+        }
+      ]
+    }
+  },
+  {
+    "id": "e4",
+    "ts": 1760000000003,
+    "sessionId": "demo",
+    "type": "tool.started",
+    "payload": {
+      "callId": "c1",
+      "tool": "get_briefing",
+      "args": {}
+    }
+  },
+  {
+    "id": "e5",
+    "ts": 1760000000004,
+    "sessionId": "demo",
+    "type": "tool.finished",
+    "payload": {
+      "callId": "c1",
+      "tool": "get_briefing",
+      "ok": true,
+      "summary": "5 Punkte im Briefing",
+      "durationMs": 84
+    }
+  },
+  {
+    "id": "e6",
+    "ts": 1760000000005,
+    "sessionId": "demo",
+    "type": "task.created",
+    "payload": {
+      "taskId": "k1",
+      "title": "Termin in Praxis-App eintragen",
+      "kind": "computer_use"
+    }
+  },
+  {
+    "id": "e7",
+    "ts": 1760000000006,
+    "sessionId": "demo",
+    "type": "task.progress",
+    "payload": {
+      "taskId": "k1",
+      "message": "Öffne Kalender",
+      "step": 2,
+      "totalSteps": 8
+    }
+  },
+  {
+    "id": "e8",
+    "ts": 1760000000007,
+    "sessionId": "demo",
+    "type": "task.done",
+    "payload": {
+      "taskId": "k1",
+      "result": "Termin am 14.10. um 10:00 eingetragen"
+    }
+  },
+  {
+    "id": "e9",
+    "ts": 1760000000008,
+    "sessionId": "demo",
+    "type": "task.failed",
+    "payload": {
+      "taskId": "k2",
+      "error": "Timeout nach 90 s"
+    }
+  },
+  {
+    "id": "e10",
+    "ts": 1760000000009,
+    "sessionId": "demo",
+    "type": "cu.frame",
+    "payload": {
+      "taskId": "k1",
+      "imageUrl": "http://localhost:8800/frames/k1/2.png",
+      "width": 1280,
+      "height": 800
+    }
+  },
+  {
+    "id": "e11",
+    "ts": 1760000000010,
+    "sessionId": "demo",
+    "type": "cu.action",
+    "payload": {
+      "taskId": "k1",
+      "action": "click",
+      "x": 640,
+      "y": 120,
+      "target": {
+        "x": 600,
+        "y": 100,
+        "width": 80,
+        "height": 40
+      },
+      "caption": "Klicke auf 'Neuer Termin'",
+      "step": 3,
+      "totalSteps": 8
+    }
+  },
+  {
+    "id": "e12",
+    "ts": 1760000000011,
+    "sessionId": "demo",
+    "type": "cu.mode",
+    "payload": {
+      "taskId": "k1",
+      "mode": "pixel",
+      "vncUrl": "http://localhost:6080/vnc.html"
+    }
+  },
+  {
+    "id": "e13",
+    "ts": 1760000000012,
+    "sessionId": "demo",
+    "type": "call.state",
+    "payload": {
+      "callId": "p1",
+      "status": "ringing",
+      "to": "Leo"
+    }
+  },
+  {
+    "id": "e14",
+    "ts": 1760000000013,
+    "sessionId": "demo",
+    "type": "approval.requested",
+    "payload": {
+      "approvalId": "a1",
+      "title": "Mail an Dr. Weber senden",
+      "detail": "Betreff: Terminbestätigung",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "e15",
+    "ts": 1760000000014,
+    "sessionId": "demo",
+    "type": "approval.resolved",
+    "payload": {
+      "approvalId": "a1",
+      "approved": true,
+      "via": "voice"
+    }
+  },
+  {
+    "id": "e16",
+    "ts": 1760000000015,
+    "sessionId": "demo",
+    "type": "ui.focus",
+    "payload": {
+      "entity": "lead",
+      "entityId": "L-007",
+      "label": "Müller GmbH"
+    }
+  },
+  {
+    "id": "e17",
+    "ts": 1760000000016,
+    "sessionId": "demo",
+    "type": "ui.widget",
+    "payload": {
+      "widgetId": "w1",
+      "kind": "bar_chart",
+      "title": "Pipeline nach Monat",
+      "data": [
+        {
+          "label": "Jul",
+          "value": 42000
+        }
+      ]
+    }
+  },
+  {
+    "id": "e18",
+    "ts": 1760000000017,
+    "sessionId": "demo",
+    "type": "briefing.item",
+    "payload": {
+      "index": 0,
+      "total": 5,
+      "icon": "calendar",
+      "title": "3 Termine heute",
+      "detail": "Erster um 10:00 mit Müller GmbH",
+      "metric": {
+        "label": "Termine",
+        "value": 3
+      }
+    }
+  },
+  {
+    "id": "e19",
+    "ts": 1760000000018,
+    "sessionId": "demo",
+    "type": "metrics.latency",
+    "payload": {
+      "turnId": "t1",
+      "firstAudioMs": 640
+    }
+  },
+  {
+    "id": "e20",
+    "ts": 1760000000019,
+    "sessionId": "demo",
+    "type": "tool.learned",
+    "payload": {
+      "tool": "praxis_book_appointment",
+      "description": "Termin in der Praxis-App buchen",
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/praxis/api/appointments"
+        }
+      ]
+    }
+  },
+  {
+    "id": "e21",
+    "ts": 1760000000020,
+    "sessionId": "demo",
+    "type": "notice",
+    "payload": {
+      "noticeId": "n1",
+      "severity": "urgent",
+      "title": "Dringende Mail von Dr. Anna Weber",
+      "detail": "Dringend: Rückruf heute?",
+      "entity": "mail",
+      "entityId": "m-in-1"
+    }
+  },
+  {
+    "id": "e22",
+    "ts": 1760000000021,
+    "sessionId": "demo",
+    "type": "notice",
+    "payload": {
+      "noticeId": "n2",
+      "severity": "info",
+      "title": "Backup fertig",
+      "detail": "Alle Daten gesichert"
+    }
+  },
+  {
+    "id": "e31",
+    "ts": 1760000000131,
+    "sessionId": "demo",
+    "type": "run.planned",
+    "payload": {
+      "runId": "r1",
+      "title": "Müller GmbH: Unterschrift vorbereiten",
+      "steps": [
+        {
+          "agentId": "a-mail",
+          "app": "mail",
+          "summary": "Antwort an Thomas Müller"
+        },
+        {
+          "agentId": "a-cal",
+          "app": "calendar",
+          "summary": "Termin 15:00 anlegen"
+        }
+      ],
+      "approvalId": "ap-r1"
+    }
+  },
+  {
+    "id": "e32",
+    "ts": 1760000000132,
+    "sessionId": "demo",
+    "type": "agent.spawned",
+    "payload": {
+      "runId": "r1",
+      "agentId": "a-mail",
+      "app": "mail",
+      "label": "Mail · schreibt"
+    }
+  },
+  {
+    "id": "e33",
+    "ts": 1760000000133,
+    "sessionId": "demo",
+    "type": "agent.action",
+    "payload": {
+      "runId": "r1",
+      "agentId": "a-mail",
+      "app": "mail",
+      "action": "type",
+      "entityId": "M-101",
+      "field": "body",
+      "text": "Hallo Herr Müller, 15 Uhr passt.",
+      "caption": "Schreibt Antwort an Thomas Müller"
+    }
+  },
+  {
+    "id": "e34",
+    "ts": 1760000000134,
+    "sessionId": "demo",
+    "type": "agent.action",
+    "payload": {
+      "runId": "r1",
+      "agentId": "a-crm",
+      "app": "crm",
+      "action": "move",
+      "entityId": "L-007",
+      "from": "angebot",
+      "to": "verhandlung",
+      "caption": "Schiebt Müller GmbH auf Verhandlung"
+    }
+  },
+  {
+    "id": "e35",
+    "ts": 1760000000135,
+    "sessionId": "demo",
+    "type": "agent.finished",
+    "payload": {
+      "runId": "r1",
+      "agentId": "a-mail",
+      "ok": true,
+      "summary": "Antwort gesendet"
+    }
+  },
+  {
+    "id": "e36",
+    "ts": 1760000000136,
+    "sessionId": "demo",
+    "type": "run.summary",
+    "payload": {
+      "runId": "r1",
+      "title": "Müller GmbH: Unterschrift vorbereiten",
+      "tasks": 4,
+      "durationMs": 11200,
+      "humanMinutes": 14
+    }
+  }
+]

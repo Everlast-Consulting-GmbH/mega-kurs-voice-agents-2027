@@ -1,0 +1,43 @@
+{
+  "type": "client",
+  "name": "render_widget",
+  "description": "Zeigt ein Diagramm/Tabelle/Karte im Dashboard aus einem festen Datensatz.",
+  "expects_response": true,
+  "response_timeout_secs": 10,
+  "execution_mode": "immediate",
+  "interruption_mode": "allow",
+  "pre_tool_speech": "auto",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "dataset": {
+        "type": "string",
+        "enum": [
+          "pipeline_by_month",
+          "leads_by_status",
+          "leads_by_city",
+          "emails_by_day"
+        ],
+        "description": "Fester Datensatz, der angezeigt werden soll"
+      },
+      "kind": {
+        "description": "Darstellung; weglassen für die passende Standardform",
+        "type": "string",
+        "enum": [
+          "bar_chart",
+          "line_chart",
+          "table",
+          "map",
+          "stat"
+        ]
+      },
+      "title": {
+        "description": "Optionaler Titel der Anzeige",
+        "type": "string"
+      }
+    },
+    "required": [
+      "dataset"
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #080a16;
+  color: #eef0ff;
+  font-family: var(--font-sans);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: default;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.stage-type {
+  font-family: var(--font-sans);
+  color: #eef0ff;
+}
+
+/* Sky: the horizon glow breathes very slowly; nothing else in the background moves. */
+@keyframes sky-breath {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(1.05);
+  }
+}
+.sky-breath {
+  transform-origin: 50% 100%;
+  animation: sky-breath 14s ease-in-out infinite alternate;
+}
+/* Faint dot raster, lower half only (mockup: 0.55cqw grid, fading out towards the top). */
+.sky-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1.2px);
+  background-size: 0.55vw 0.55vw;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 55%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 55%);
+  pointer-events: none;
+}
+
+/* Call: peach rings pulse out of the sphere. */
+@keyframes call-ring {
+  0% {
+    transform: scale(0.94);
+    opacity: 0.2;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.08);
+    opacity: 0.2;
+  }
+}
+.call-ring {
+  animation: call-ring 3.6s ease-in-out infinite;
+}
+.call-ring-fast {
+  animation-duration: 1.8s;
+}
+
+/* Agents desktop: blinking text caret and the light running along a beam. */
+@keyframes caret-blink {
+  0%, 45% { opacity: 1; }
+  55%, 100% { opacity: 0; }
+}
+.caret-blink {
+  animation: caret-blink 1s steps(1, end) infinite;
+}
+@keyframes beam-flow {
+  from { transform: translateX(var(--from, 0px)); }
+  to { transform: translateX(var(--to, 600px)); }
+}
+.beam-flow {
+  left: -160px;
+  animation: beam-flow 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes chip-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.8); }
+}
+.chip-pulse {
+  animation: chip-pulse 1.2s ease-in-out infinite;
+}
